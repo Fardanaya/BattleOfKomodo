@@ -1,18 +1,14 @@
 package src.Node.Data;
 
-public enum AgeStage {
-    BABY("Bayi"),
-    TEEN("Remaja"),
-    ADULT("Dewasa");
+public class AgeStage {
 
-    private final String stageName;
+    private String stageName;
 
-    AgeStage(String stageName) {
+    public AgeStage(String stageName) {
         this.stageName = stageName;
     }
 
-    @Override
-    public String toString() {
+    public String getStageName() {
         return stageName;
     }
 }

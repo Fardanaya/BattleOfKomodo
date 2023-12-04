@@ -21,6 +21,10 @@ public class ModelPlayer {
         this.PlayerList.add(player);
     }
 
+    public void updatePlayer(int index, Player player) {
+        this.PlayerList.set(index, player);
+    }
+
     public int searchPlayer(String username) {
         for (Player player : PlayerList) {
             if (player.getUsername().equals(username)) {
@@ -34,12 +38,8 @@ public class ModelPlayer {
         return PlayerList.get(index);
     }
 
-    public void showPlayerList() {
-        for (Player player : PlayerList) {
-            System.out.println("username : " + player.getUsername());
-            System.out.println("nickname : " + player.getNickname());
-            System.out.println("----------------------");
-        }
+    public ArrayList<Player> getAllPlayers() {
+        return PlayerList;
     }
 
     public boolean saveData() {

@@ -1,1 +1,38 @@
-[{"level":1,"defense":1,"attack":1,"name":"Dragon","HP":1,"ageStage":{"name":"Remaja"},"id":"Dragon","experience":1,"element":{"weakness":0,"strength":0,"name":"Fire"}},{"level":1,"defense":1,"attack":1,"name":"Dragon2","HP":1,"ageStage":{"name":"Dewasa"},"id":"Dragon2","experience":1,"element":{"weakness":0,"strength":0,"name":"Earth"}}]
+[
+  {
+    "id": "Dragon",
+    "name": "Dragon",
+    "level": 1,
+    "attack": 1,
+    "defense": 1,
+    "currentHP": 1,
+    "maxHP": 1,
+    "experience": 1,
+    "element": {
+      "name": "Fire",
+      "weakness": 0,
+      "strength": 0
+    },
+    "ageStage": {
+      "stageName": "Remaja"
+    }
+  },
+  {
+    "id": "Dragon2",
+    "name": "Dragon2",
+    "level": 1,
+    "attack": 1,
+    "defense": 1,
+    "currentHP": 1,
+    "maxHP": 1,
+    "experience": 1,
+    "element": {
+      "name": "Earth",
+      "weakness": 0,
+      "strength": 0
+    },
+    "ageStage": {
+      "stageName": "Dewasa"
+    }
+  }
+]

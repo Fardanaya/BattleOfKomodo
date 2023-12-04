@@ -1,1 +1,12 @@
-[{"password":"avux0000","nickname":"Player","username":"Davin"},{"password":"franky69","nickname":"Player","username":"Franky"}]
+[
+  {
+    "nickname": "Player",
+    "username": "Davin",
+    "password": "avux0000"
+  },
+  {
+    "nickname": "Player",
+    "username": "Franky",
+    "password": "franky69"
+  }
+]

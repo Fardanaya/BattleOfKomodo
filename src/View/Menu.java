@@ -14,13 +14,14 @@ public class Menu {
 
     public void latih(){
         System.out.println("===LATIH===");
-        Model.dragonList.showDragonList();
+        // Model.dragonList.showDragonList(); // FIXME : METHOD CHANGED
         // TODO dijadikan selector
     }
 
     public void zoo(){
         System.out.println("===ZOO===");
-        Model.dragonList.showDragonList();
+        // Model.dragonList.showDragonList(); // FIXME : METHOD CHANGED
+        // TODO dijadikan selector
     }
 
     public void market(){

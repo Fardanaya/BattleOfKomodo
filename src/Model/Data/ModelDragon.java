@@ -15,7 +15,6 @@ public class ModelDragon {
 
     public void fetchJsonData() {
         this.DragonList = dataJSON.readDataJSON();
-        System.out.println(DragonList.size());
     }
 
     public void addDragon(Dragon dragon) {
@@ -25,25 +24,18 @@ public class ModelDragon {
     public int searchDragon(String name) {
         for (Dragon dragon : DragonList) {
             if (dragon.getName().equals(name)) {
-                return DragonList.indexOf(dragon);
+                return this.DragonList.indexOf(dragon);
             }
         }
         return -1;
     }
 
     public Dragon getDragon(int index) {
-        return DragonList.get(index);
+        return this.DragonList.get(index);
     }
 
-    public void showDragonList() {
-        for (Dragon dragon : DragonList) {
-            System.out.println("id : " + dragon.getId());
-            System.out.println("name : " + dragon.getName());
-            System.out.println("level : " + dragon.getLevel());
-            System.out.println("element : " + dragon.getElement().getName());
-            System.out.println("Stage : " + dragon.getAgeStage().getStageName());
-            System.out.println("----------------------");
-        }
+    public ArrayList<Dragon> getAllDragons() {
+        return this.DragonList;
     }
 
     public boolean saveData() {

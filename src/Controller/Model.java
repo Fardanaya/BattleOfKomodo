@@ -11,6 +11,10 @@ public class Model {
     Message gameMessage = new Message();
 
     public Model() {
-        gameMessage.alert("Successfully Load Data");
+        gameMessage.alert("Loading Data...");
+    }
+
+    public void Complete() {
+        gameMessage.alert("Successfully Load Data !");
     }
 }

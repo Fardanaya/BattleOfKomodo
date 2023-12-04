@@ -4,12 +4,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 
-import com.github.cliftonlabs.json_simple.JsonArray;
-import com.github.cliftonlabs.json_simple.JsonException;
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsoner;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import src.Node.Data.AgeStage;
 import src.Node.Data.Dragon;
@@ -52,25 +53,25 @@ public class ModelDragonJSON {
             JsonArray JSONDragon = new JsonArray();
             for (Dragon dragon : dragonList) {
                 JsonObject dragonObject = new JsonObject();
-                dragonObject.put(jsonDragon.id, dragon.getId());
-                dragonObject.put(jsonDragon.name, dragon.getName());
-                dragonObject.put(jsonDragon.lvl, dragon.getLevel());
-                dragonObject.put(jsonDragon.attack, dragon.getAttack());
-                dragonObject.put(jsonDragon.defense, dragon.getDefense());
-                dragonObject.put(jsonDragon.hp, dragon.getMaxHP());
-                dragonObject.put(jsonDragon.xp, dragon.getExperience());
+                dragonObject.addProperty(jsonDragon.id, dragon.getId());
+                dragonObject.addProperty(jsonDragon.name, dragon.getName());
+                dragonObject.addProperty(jsonDragon.lvl, dragon.getLevel());
+                dragonObject.addProperty(jsonDragon.attack, dragon.getAttack());
+                dragonObject.addProperty(jsonDragon.defense, dragon.getDefense());
+                dragonObject.addProperty(jsonDragon.hp, dragon.getMaxHP());
+                dragonObject.addProperty(jsonDragon.xp, dragon.getExperience());
 
                 JsonObject elementObject = new JsonObject();
                 Element element = dragon.getElement();
-                elementObject.put("name", element.getName());
-                elementObject.put("weakness", element.getWeakness());
-                elementObject.put("strength", element.getStrength());
-                dragonObject.put(jsonDragon.element, elementObject);
+                elementObject.addProperty("name", element.getName());
+                elementObject.addProperty("weakness", element.getWeakness());
+                elementObject.addProperty("strength", element.getStrength());
+                dragonObject.add(jsonDragon.element, elementObject);
 
                 JsonObject ageStageObject = new JsonObject();
                 AgeStage ageStage = dragon.getAgeStage();
-                ageStageObject.put("name", ageStage.getStageName());
-                dragonObject.put(jsonDragon.ageStage, ageStageObject);
+                ageStageObject.addProperty("name", ageStage.getStageName());
+                dragonObject.add(jsonDragon.ageStage, ageStageObject);
 
                 JSONDragon.add(dragonObject);
             }
@@ -116,19 +117,19 @@ public class ModelDragonJSON {
                 String ageStageName = ageStageJson.get("name").toString();
                 AgeStage ageStage = new AgeStage(ageStageName);
 
-                ListDragon.add(new Dragon(id, name, Integer.parseInt(lvl), Integer.parseInt(attack), Integer.parseInt(defense), Integer.parseInt(hp), Integer.parseInt(maxhp), Integer.parseInt(xp), element, ageStage));
+                ListDragon.add(new Dragon(id, name, Integer.parseInt(lvl), Integer.parseInt(attack),
+                        Integer.parseInt(defense), Integer.parseInt(hp), Integer.parseInt(maxhp), Integer.parseInt(xp),
+                        element, ageStage));
             }
             return ListDragon;
         }
     }
 
-    public void writeDataJSON(ArrayList<Dragon> playerList) {
-        JsonArray JSONplayer = convertArrayListToJsonArray(playerList);
-        try {
-            FileWriter file = new FileWriter(fname);
-            file.write(JSONplayer.toJson());
-            file.flush();
-            file.close();
+    public void writeDataJSON(ArrayList<Dragon> dragonList) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(dragonList);
+        try (FileWriter file = new FileWriter(fname)) {
+            file.write(json);
         } catch (IOException e) {
             System.out.println("Error.");
             e.printStackTrace();
@@ -137,10 +138,10 @@ public class ModelDragonJSON {
 
     public ArrayList<Dragon> readDataJSON() {
         ArrayList<Dragon> dragonList = new ArrayList<>();
-        try (FileReader file = new FileReader(fname)) {
-            JsonArray jsonDragon = (JsonArray) Jsoner.deserialize(file);
+        try (Reader reader = new FileReader(fname)) {
+            JsonArray jsonDragon = new Gson().fromJson(reader, JsonArray.class);
             dragonList = convertJsonArraytoArrayList(jsonDragon);
-        } catch (IOException | JsonException e) {
+        } catch (IOException e) {
             // System.out.println("Data Kosong. Error :");
             // e.printStackTrace();
         }

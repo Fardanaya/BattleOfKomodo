@@ -4,12 +4,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 
-import com.github.cliftonlabs.json_simple.JsonArray;
-import com.github.cliftonlabs.json_simple.JsonException;
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsoner;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import src.View.Message;
 import src.Node.Data.Player;
@@ -50,9 +51,9 @@ public class ModelPlayerJSON {
             JsonArray JSONplayer = new JsonArray();
             for (Player player : playerList) {
                 JsonObject playerObject = new JsonObject();
-                playerObject.put(jsonPlayer.nickname, player.getNickname());
-                playerObject.put(jsonPlayer.username, player.getUsername());
-                playerObject.put(jsonPlayer.password, player.getPassword());
+                playerObject.addProperty(jsonPlayer.nickname, player.getNickname());
+                playerObject.addProperty(jsonPlayer.username, player.getUsername());
+                playerObject.addProperty(jsonPlayer.password, player.getPassword());
                 JSONplayer.add(playerObject);
             }
             return JSONplayer;
@@ -75,25 +76,23 @@ public class ModelPlayerJSON {
         }
     }
 
-    public void writeDataJSON(ArrayList<Player> playerList) {
-        JsonArray JSONplayer = convertArrayListToJsonArray(playerList);
-        try {
-            FileWriter file = new FileWriter(fname);
-            file.write(JSONplayer.toJson());
-            file.flush();
-            file.close();
-        } catch (IOException e) {
-            System.out.println("Error.");
-            e.printStackTrace();
-        }
+public void writeDataJSON(ArrayList<Player> playerList) {
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    String json = gson.toJson(playerList);
+    try (FileWriter file = new FileWriter(fname)) {
+        file.write(json);
+    } catch (IOException e) {
+        System.out.println("Error.");
+        e.printStackTrace();
     }
+}
 
     public ArrayList<Player> readDataJSON() {
         ArrayList<Player> playerList = new ArrayList<>();
-        try (FileReader file = new FileReader(fname)) {
-            JsonArray jsonPlayer = (JsonArray) Jsoner.deserialize(file);
+        try (Reader reader = new FileReader(fname)) {
+            JsonArray jsonPlayer = new Gson().fromJson(reader, JsonArray.class);
             playerList = convertJsonArraytoArrayList(jsonPlayer);
-        } catch (IOException | JsonException e) {
+        } catch (IOException e) {
             // System.out.println("Data Kosong. Error :");
             // e.printStackTrace();
         }

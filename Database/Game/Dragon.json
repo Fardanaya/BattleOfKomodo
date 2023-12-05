@@ -1,38 +1,65 @@
 [
   {
-    "id": "Dragon",
-    "name": "Dragon",
+    "id": "volcanodragon",
+    "name": "Flame Dragon",
     "level": 1,
-    "attack": 1,
-    "defense": 1,
     "currentHP": 1,
     "maxHP": 1,
     "experience": 1,
     "element": {
+      "id": "fire",
       "name": "Fire",
-      "weakness": 0,
-      "strength": 0
+      "weakness": "water",
+      "strength": "nature"
     },
-    "ageStage": {
-      "stageName": "Remaja"
-    }
+    "age": {
+      "id": "egg",
+      "stageName": "Egg"
+    },
+    "skills": [
+      {
+        "id": 0,
+        "name": "Fireball",
+        "startPoint": 5
+      }
+    ]
   },
   {
-    "id": "Dragon2",
-    "name": "Dragon2",
+    "id": "icedragon",
+    "name": "Ice Dragon",
     "level": 1,
-    "attack": 1,
-    "defense": 1,
     "currentHP": 1,
     "maxHP": 1,
     "experience": 1,
     "element": {
-      "name": "Earth",
-      "weakness": 0,
-      "strength": 0
+      "id": "water",
+      "name": "Water",
+      "weakness": "nature",
+      "strength": "fire"
     },
-    "ageStage": {
-      "stageName": "Dewasa"
-    }
+    "age": {
+      "id": "egg",
+      "stageName": "Egg"
+    },
+    "skills": []
+  },
+  {
+    "id": "tropicaldragon",
+    "name": "Tropical Dragon",
+    "level": 1,
+    "currentHP": 1,
+    "maxHP": 1,
+    "experience": 1,
+    "element": {
+      "id": "nature",
+      "name": "Nature",
+      "weakness": "fire",
+      "strength": "water"
+    },
+    "age": {
+      "id": "egg",
+      "stageName": "Egg"
+    },
+    "skills": []
   }
 ]

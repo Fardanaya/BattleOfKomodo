@@ -1,29 +1,31 @@
 package src.Node.Data;
 
 public class Element {
+    private String id;
     private String name;
-    private int weakness;
-    private int strength;
+    private String weakness;
+    private String strength;
 
-    public Element(String name, int weakness, int strength) {
+    public Element(String id, String name, String weakness, String strength) {
+        this.id = id;
         this.name = name;
         this.weakness = weakness;
         this.strength = strength;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getWeakness() {
+    public String getWeakness() {
         return weakness;
     }
 
-    public int getStrength() {
+    public String getStrength() {
         return strength;
-    }
-
-    public static Element valueOf(String string) {
-        return null;
     }
 }

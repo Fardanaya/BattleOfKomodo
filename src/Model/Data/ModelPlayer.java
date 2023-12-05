@@ -6,10 +6,10 @@ import src.Node.Data.Player;
 
 public class ModelPlayer {
     public ArrayList<Player> PlayerList;
-
-    ModelPlayerJSON dataJSON = new ModelPlayerJSON();
+    ModelPlayerJSON dataJSON;
 
     public ModelPlayer() {
+        this.dataJSON = new ModelPlayerJSON();
         fetchJsonData();
     }
 

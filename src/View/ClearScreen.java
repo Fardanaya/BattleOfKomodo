@@ -9,7 +9,7 @@ public class ClearScreen {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             }
             else {
-                System.out.print("\033\143");
+                System.out.print("\033\143 hehe");
             }
         } catch (IOException | InterruptedException ex) {}
     }

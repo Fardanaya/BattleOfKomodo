@@ -1,0 +1,12 @@
+[
+  {
+    "id": 0,
+    "name": "Fireball",
+    "startPoint": 5
+  },
+  {
+    "id": 1,
+    "name": "Flood",
+    "startPoint": 7
+  }
+]

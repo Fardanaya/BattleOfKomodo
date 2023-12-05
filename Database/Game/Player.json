@@ -1,12 +1,34 @@
 [
   {
     "nickname": "Player",
-    "username": "Davin",
-    "password": "avux0000"
-  },
-  {
-    "nickname": "Player",
-    "username": "Franky",
-    "password": "franky69"
+    "username": "admin",
+    "password": "admin",
+    "dragon": [
+      {
+        "id": "volcanodragon",
+        "name": "Flame Dragon",
+        "level": 1,
+        "currentHP": 1,
+        "maxHP": 1,
+        "experience": 1,
+        "element": {
+          "id": "fire",
+          "name": "Fire",
+          "weakness": "water",
+          "strength": "nature"
+        },
+        "age": {
+          "id": "egg",
+          "stageName": "Egg"
+        },
+        "skills": [
+          {
+            "id": 0,
+            "name": "Fireball",
+            "startPoint": 5
+          }
+        ]
+      }
+    ]
   }
 ]

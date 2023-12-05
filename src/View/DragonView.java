@@ -3,13 +3,13 @@ package src.View;
 import java.util.ArrayList;
 import src.Node.Data.Dragon;
 
-public class DragonMenu {
+public class DragonView {
     public void showDragonDetails(Dragon dragon) {
         System.out.println("Dragon ID : " + dragon.getId());
         System.out.println("Dragon Name : " + dragon.getName());
         System.out.println("Dragon Level : " + dragon.getLevel());
-        System.out.println("Dragon Attack : " + dragon.getAttack());
-        System.out.println("Dragon Defense : " + dragon.getDefense());
+        // System.out.println("Dragon Attack : " + dragon.getAttack());
+        // System.out.println("Dragon Defense : " + dragon.getDefense());
         System.out.println("Dragon Current HP : " + dragon.getCurrentHP());
         System.out.println("Dragon Max HP : " + dragon.getMaxHP());
         System.out.println("Dragon Experience : " + dragon.getExperience());
@@ -29,8 +29,10 @@ public class DragonMenu {
 
     public void showAllDragonDetails(ArrayList<Dragon> dragonList) {
         for (Dragon dragon : dragonList) {
+            System.out.println("========================");
             showDragonDetails(dragon);
         }
+        System.out.println("========================");
     }
 
     public void showAllDragon(ArrayList<Dragon> dragonList) {

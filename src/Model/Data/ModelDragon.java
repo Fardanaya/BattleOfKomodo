@@ -7,9 +7,10 @@ import src.Node.Data.Dragon;
 public class ModelDragon {
     public ArrayList<Dragon> DragonList;
 
-    ModelDragonJSON dataJSON = new ModelDragonJSON();
+    ModelDragonJSON dataJSON;
 
     public ModelDragon() {
+        this.dataJSON = new ModelDragonJSON();
         fetchJsonData();
     }
 
@@ -36,6 +37,10 @@ public class ModelDragon {
 
     public ArrayList<Dragon> getAllDragons() {
         return this.DragonList;
+    }
+
+    public void removeDragon(int index) {
+        this.DragonList.remove(index);
     }
 
     public boolean saveData() {

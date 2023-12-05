@@ -8,7 +8,7 @@ public class Player {
     private String password;
 
     // TODO ARRAYLIST DRAGON
-    private ArrayList<Dragon> dragon;
+    private ArrayList<Dragon> dragon = new ArrayList<>();
 
     // register
     public Player(String username, String password) {
@@ -56,8 +56,7 @@ public class Player {
     public ArrayList<Dragon> getAllDragon() {
         return dragon;
     }
-
-    // TODO : UNTESTED
+    
     public void addDragonToPlayer(Dragon Dragon) {
         this.dragon.add(Dragon);
     }

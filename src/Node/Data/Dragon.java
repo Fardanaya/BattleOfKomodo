@@ -1,31 +1,34 @@
 package src.Node.Data;
 
+import java.util.ArrayList;
+
+import com.google.gson.JsonElement;
+
 public class Dragon {
     // TODO : SKILL , ELEMEN , AGE
 
     private String id;
     private String name;
     private int level;
-    private int attack;
-    private int defense;
     private int currentHP;
     private int maxHP;
     private int experience;
     private Element element;
-    private AgeStage ageStage;
+    private Age age;
+    private Skill skill;
 
-    public Dragon(String id, String name, int level, int attack, int defense, int currentHP,
-            int maxHP, int experience, Element element, AgeStage ageStage) {
+    private ArrayList<Skill> skills = new ArrayList<>();
+
+    public Dragon(String id, String name, int level, int currentHP,
+            int maxHP, int experience, Element element, Age age) {
         this.id = id;
         this.name = name;
         this.level = level;
         this.element = element;
-        this.attack = attack;
-        this.defense = defense;
         this.currentHP = currentHP;
         this.maxHP = maxHP;
         this.experience = experience;
-        this.ageStage = ageStage;
+        this.age = age;
     }
 
     public String getId() {
@@ -44,14 +47,6 @@ public class Dragon {
         return element;
     }
 
-    public int getAttack() {
-        return attack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
     public int getCurrentHP() {
         return currentHP;
     }
@@ -64,13 +59,32 @@ public class Dragon {
         return experience;
     }
 
-    public AgeStage getAgeStage() {
-        return ageStage;
+    public Age getAgeStage() {
+        return age;
     }
 
-    public Dragon cloneDragon() {
-        Dragon clonedDragon = new Dragon(this.id, this.name, this.level, this.attack, this.defense,
-                this.currentHP, this.maxHP, this.experience, this.element, this.ageStage);
-        return clonedDragon;
+    public Skill getSkill() {
+        return skill;
     }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+    
+    public Skill getSkill(int index) {
+        return skills.get(index);
+    }
+
+    public ArrayList<Skill> getAllSkills() {
+        return skills;
+    }
+
+    public void addSkill(Skill skill) {
+        this.skills.add(skill);
+    }
+
+    // public void updateSkill(int index, Skill skill) {
+    //     this.skills.set(index, skill);
+    // }
+    
 }

@@ -16,15 +16,15 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
-import src.Node.Data.Dragon;
 import src.View.Message;
+import src.Node.Data.Skill;
 
-public class ModelDragonJSON {
+public class ModelSkillJSON {
 
-    String fname = "database/Game/Dragon.json";
     Message gameMessage = new Message();
+    String fname = "database/Game/Skill.json";
 
-    public ModelDragonJSON() {
+    public ModelSkillJSON() {
         setupFile();
     }
 
@@ -42,7 +42,7 @@ public class ModelDragonJSON {
                 File file = new File(fname);
                 if (file.createNewFile()) {
                     try (FileWriter fileWriter = new FileWriter(file, true);
-                            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+                        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
                         bufferedWriter.write("[]");
                         gameMessage.alert("File telah dibuat - " + file.getName());
                     } catch (IOException e) {
@@ -57,21 +57,23 @@ public class ModelDragonJSON {
         }
     }
 
-    public JsonArray convertArrayListToJsonArray(ArrayList<Dragon> dragonList) {
-        return new Gson().toJsonTree(dragonList).getAsJsonArray();
+    // public JsonArray convertArrayListToJsonArray(ArrayList<Skill> skillList) {
+        
+    public JsonArray convertArrayListToJsonArray(ArrayList<Skill> skillList) {
+        return new Gson().toJsonTree(skillList).getAsJsonArray();
     }
 
-    private ArrayList<Dragon> convertJsonArraytoArrayList(JsonArray jsonDragonList) {
+    private ArrayList<Skill> convertJsonArraytoArrayList(JsonArray jsonSkillList) {
         Gson gson = new Gson();
-        Type dragonListType = new TypeToken<ArrayList<Dragon>>() {
+        Type skillListType = new TypeToken<ArrayList<Skill>>() {
         }.getType();
-        ArrayList<Dragon> dragonList = gson.fromJson(jsonDragonList, dragonListType);
-        return dragonList;
+        ArrayList<Skill> skillList = gson.fromJson(jsonSkillList, skillListType);
+        return skillList;
     }
 
-    public void writeDataJSON(ArrayList<Dragon> dragonList) {
+    public void writeDataJSON(ArrayList<Skill> skillList) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(dragonList);
+        String json = gson.toJson(skillList);
         try (FileWriter file = new FileWriter(fname)) {
             file.write(json);
         } catch (IOException e) {
@@ -80,17 +82,18 @@ public class ModelDragonJSON {
         }
     }
 
-    public ArrayList<Dragon> readDataJSON() {
-        ArrayList<Dragon> dragonList = new ArrayList<>();
+    public ArrayList<Skill> readDataJSON() {
+        ArrayList<Skill> skillList = new ArrayList<>();
         try (Reader reader = new FileReader(fname)) {
-            JsonArray jsonPlayer = new JsonParser().parse(reader).getAsJsonArray();
-            dragonList = convertJsonArraytoArrayList(jsonPlayer);
+            JsonArray jsonSkill = new JsonParser().parse(reader).getAsJsonArray();
+            skillList = convertJsonArraytoArrayList(jsonSkill);
         } catch (IOException e) {
-            // System.out.println("Data Kosong. Error :");
-            // e.printStackTrace();
+            System.out.println("Data Kosong. Error :");
+            e.printStackTrace();
         } catch (JsonParseException e) {
-            // System.out.println("File Kosong");
+            System.out.println("File Kosong");
         }
-        return dragonList;
+        return skillList;
     }
+
 }

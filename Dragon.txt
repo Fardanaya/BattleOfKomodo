@@ -1,25 +1,12 @@
 Flame
-- flaming rock
-- volcano
-- cool fire
-- hot metal
-- pure Flame
+- Flame Dragon | https://dragoncity.fandom.com/wiki/Flame_Dragon
+- Volcano Dragon | https://dragoncity.fandom.com/wiki/Volcano_Dragon
 
 Water
-- sea
-- frozen wind 
-- waterfall
-- ice
+- Sea Dragon | https://dragoncity.fandom.com/wiki/Sea_Dragon
 
-Rock
-- obisidian
-- mud
-- terra
-- dust
-- emerald
+Earth
+- Terra Dragon | https://dragoncity.fandom.com/wiki/Terra_Dragon
 
 Nature
-- Nature
-- tropical
-- coral
-- dandelion
+- Nature Dragon | https://dragoncity.fandom.com/wiki/Nature_Dragon

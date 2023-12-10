@@ -63,24 +63,26 @@ public class Auth {
         return hasLetter && hasDigit;
     }
 
-    public void login() {
+    public Player login() {
         boolean log = false;
+        int userid;
         System.out.println("LOGIN");
         do {
             String username = prompt.getUserInput("username : ");
             String password = prompt.getPasswordInput("password : ");
-            int userlog = Model.playerList.searchPlayer(username);
-            if (userlog == -1) {
+            userid = Model.playerList.searchPlayer(username);
+            if (userid == -1) {
                 System.out.println("data user tidak ditemukan");
                 continue;
             }
-            if (!password.equals(Model.playerList.getPlayer(userlog).getPassword())) {
+            if (!password.equals(Model.playerList.getPlayer(userid).getPassword())) {
                 System.out.println("password salah");
                 continue;
             }
             log = true;
         } while (!log);
         System.out.println("Login Berhasil");
+        return Model.playerList.getPlayer(userid);
     }
 
 }

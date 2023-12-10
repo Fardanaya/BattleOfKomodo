@@ -3,12 +3,12 @@ package src.Node.Data;
 public class Skill {
     public int id;
     public String name;
-    public int startPoint;
+    public int damage;
 
-    public Skill(int id, String name, int startPoint){
+    public Skill(int id, String name, int damage){
         this.id = id;
         this.name = name;
-        this.startPoint = startPoint;
+        this.damage = damage;
     }
 
     // TODO: incerment (start point) damage for leveling
@@ -21,8 +21,8 @@ public class Skill {
         return name;
     }
 
-    public int getStartPoint(){
-        return startPoint;
+    public int getDamage(){
+        return damage;
     }
 
 }

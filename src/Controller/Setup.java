@@ -22,40 +22,40 @@ public class Setup {
     }
 
     private void setupElement() {
-        Model.element.addElement(new Element("fire", "Fire", "water", "nature"));
-        Model.element.addElement(new Element("water", "Water", "nature", "fire"));
-        Model.element.addElement(new Element("nature", "Nature", "fire", "water"));
+        Data.element.addElement(new Element("fire", "Fire", "water", "nature"));
+        Data.element.addElement(new Element("water", "Water", "nature", "fire"));
+        Data.element.addElement(new Element("nature", "Nature", "fire", "water"));
     }
 
     private void setupAge() {
-        Model.age.addAge(new Age("egg", "Egg"));
-        Model.age.addAge(new Age("baby", "Baby"));
-        Model.age.addAge(new Age("young", "Muda"));
-        Model.age.addAge(new Age("adult", "Dewasa"));
+        Data.age.addAge(new Age("egg", "Egg"));
+        Data.age.addAge(new Age("baby", "Baby"));
+        Data.age.addAge(new Age("young", "Muda"));
+        Data.age.addAge(new Age("adult", "Dewasa"));
     }
 
     private void setupDragon() {
-        Model.dragonList.addDragon(new Dragon("volcanodragon", "Flame Dragon", 1, 1, 1, 1,
-                Model.element.getElement(Model.element.searchElement("fire")),
-                Model.age.getAge(Model.age.searchAge("egg"))));
+        Data.dragonList.addDragon(new Dragon("volcanodragon", "Flame Dragon", 1, 1, 1, 1,
+                Data.element.getElement(Data.element.searchElement("fire")),
+                Data.age.getAge(Data.age.searchAge("egg"))));
 
-        Model.dragonList.addDragon(new Dragon("icedragon", "Ice Dragon", 1, 1, 1, 1,
-                Model.element.getElement(Model.element.searchElement("water")),
-                Model.age.getAge(Model.age.searchAge("egg"))));
+        Data.dragonList.addDragon(new Dragon("icedragon", "Ice Dragon", 1, 1, 1, 1,
+                Data.element.getElement(Data.element.searchElement("water")),
+                Data.age.getAge(Data.age.searchAge("egg"))));
 
-        Model.dragonList.addDragon(new Dragon("tropicaldragon", "Tropical Dragon", 1, 1, 1, 1,
-                Model.element.getElement(Model.element.searchElement("nature")),
-                Model.age.getAge(Model.age.searchAge("egg"))));
+        Data.dragonList.addDragon(new Dragon("tropicaldragon", "Tropical Dragon", 1, 1, 1, 1,
+                Data.element.getElement(Data.element.searchElement("nature")),
+                Data.age.getAge(Data.age.searchAge("egg"))));
 
     }
 
     public void setupSkill() {
-        Model.skillList.addSkill(new Skill(0, "Fireball", 5));
-        Model.skillList.addSkill(new Skill(1, "Flood", 7));
+        Data.skillList.addSkill(new Skill(0, "Fireball", 5));
+        Data.skillList.addSkill(new Skill(1, "Flood", 7));
     }
 
     public void testSetupPlayer() {
-        Model.playerList.addPlayer(new Player("admin", "admin"));
+        Data.playerList.addPlayer(new Player("admin", "admin"));
     }
     
     public void Complete() {

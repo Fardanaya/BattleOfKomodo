@@ -12,12 +12,12 @@ public class Auth {
         System.out.println("REGISTRASI");
         do {
             username = prompt.getUserInput("Username : ");
-            if (Model.playerList.searchPlayer(username) != -1) {
+            if (Data.playerList.searchPlayer(username) != -1) {
                 ClearScreen.clearConsole();
                 System.out.println("Username sudah terdaftar. Silakan coba lagi.");
                 continue;
             }
-        } while (Model.playerList.searchPlayer(username) != -1);
+        } while (Data.playerList.searchPlayer(username) != -1);
 
         do {
             password = prompt.getPasswordInput("password: ");
@@ -40,7 +40,7 @@ public class Auth {
                 System.out.println("Password : " + ("*").repeat(password.length()));
                 continue;
             }
-            Model.playerList.addPlayer(new Player(username, password));
+            Data.playerList.addPlayer(new Player(username, password));
             System.out.println("Registrasi Berhasil");
         } while (!password.equals(verifpass));
     }
@@ -70,19 +70,19 @@ public class Auth {
         do {
             String username = prompt.getUserInput("username : ");
             String password = prompt.getPasswordInput("password : ");
-            userid = Model.playerList.searchPlayer(username);
+            userid = Data.playerList.searchPlayer(username);
             if (userid == -1) {
                 System.out.println("data user tidak ditemukan");
                 continue;
             }
-            if (!password.equals(Model.playerList.getPlayer(userid).getPassword())) {
+            if (!password.equals(Data.playerList.getPlayer(userid).getPassword())) {
                 System.out.println("password salah");
                 continue;
             }
             log = true;
         } while (!log);
         System.out.println("Login Berhasil");
-        return Model.playerList.getPlayer(userid);
+        return Data.playerList.getPlayer(userid);
     }
 
 }

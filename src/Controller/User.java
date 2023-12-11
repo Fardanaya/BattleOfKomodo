@@ -8,7 +8,7 @@ public class User {
                 auth.register();
                 break;
             case 2:
-                Model.setPlayer(auth.login());
+                Data.setPlayer(auth.login());
                 break;
             case 3:
                 System.exit(0);

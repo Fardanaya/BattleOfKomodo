@@ -10,7 +10,7 @@ public class DragonView {
         System.out.println("Dragon Level : " + dragon.getLevel());
         // System.out.println("Dragon Attack : " + dragon.getAttack());
         // System.out.println("Dragon Defense : " + dragon.getDefense());
-        System.out.println("Dragon Current HP : " + dragon.getCurrentHP());
+        System.out.println("Dragon Current HP : " + dragon.getBattleHP());
         System.out.println("Dragon Max HP : " + dragon.getMaxHP());
         System.out.println("Dragon Experience : " + dragon.getExperience());
         System.out.println("Dragon Element : ");

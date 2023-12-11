@@ -1,1 +1,4 @@
-age di controller nanti kalo tambah xp habis battle ata habis train ada triger pengecekan
+- age di controller nanti kalo tambah xp habis battle ata habis train ada triger pengecekan
+- unlock Skill at level ?
+- setup skill & base power
+- display selected enemy & health ( bar / number / percentage )

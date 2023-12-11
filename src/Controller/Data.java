@@ -1,17 +1,19 @@
 package src.Controller;
 
-import src.Model.Data.ModelAge;
-import src.Model.Data.ModelDragon;
-import src.Model.Data.ModelElement;
-import src.Model.Data.ModelPlayer;
-import src.Model.Data.ModelSkill;
+import src.Model.Data.*;
+
 import src.Node.Data.Player;
+
+import src.View.Input;
 import src.View.Message;
 
-public class Model {
+public class Data {
     // REQUIRED BY GAME
+    public static Input input = new Input();
     public static ModelElement element = new ModelElement();
     public static ModelAge age = new ModelAge();
+
+    // REQUIRED DATA
     public static ModelPlayer playerList = new ModelPlayer();
     public static ModelSkill skillList = new ModelSkill();
     public static ModelDragon dragonList = new ModelDragon();
@@ -21,7 +23,7 @@ public class Model {
 
     Message gameMessage = new Message();
 
-    public Model() {
+    public Data() {
         gameMessage.alert("Loading Data...");
     }
 
@@ -30,6 +32,6 @@ public class Model {
     }
 
     public static void setPlayer(Player player) {
-        Model.player = player;
+        Data.player = player;
     }
 }

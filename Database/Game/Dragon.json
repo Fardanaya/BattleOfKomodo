@@ -3,7 +3,8 @@
     "id": "volcanodragon",
     "name": "Flame Dragon",
     "level": 1,
-    "currentHP": 30,
+    "battleHP": 0,
+    "HP": 30,
     "maxHP": 100,
     "experience": 1,
     "element": {
@@ -28,7 +29,8 @@
     "id": "icedragon",
     "name": "Ice Dragon",
     "level": 1,
-    "currentHP": 30,
+    "battleHP": 0,
+    "HP": 30,
     "maxHP": 100,
     "experience": 1,
     "element": {

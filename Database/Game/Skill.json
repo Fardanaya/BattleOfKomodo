@@ -1,8 +1,8 @@
 [
   {
     "id": 0,
-    "name": "Fireball",
-    "damage": 5
+    "name": "Lava Balls",
+    "damage": 550
   },
   {
     "id": 1,

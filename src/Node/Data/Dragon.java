@@ -10,7 +10,7 @@ public class Dragon {
     private String id;
     private String name;
     private int level;
-    private int currentHP;
+    private int battleHP;
     private int HP;
     private int maxHP;
     private int experience;
@@ -48,16 +48,16 @@ public class Dragon {
         return element;
     }
 
-    public int getCurrentHP() {
-        return currentHP;
+    public int getBattleHP() {
+        return battleHP;
     }
     
     public int getHP() {
         return HP;
     }
 
-    public void setCurrentHP(int currentHP) {
-        this.currentHP = currentHP;
+    public void setBattleHP(int battleHP) {
+        this.battleHP = battleHP;
     }
 
     public int getMaxHP() {

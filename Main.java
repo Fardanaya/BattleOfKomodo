@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 import src.Controller.Auth;
 import src.Controller.Battle;
-import src.Controller.Model;
+import src.Controller.Data;
 import src.Controller.Setup;
 import src.Model.Data.ModelDragon;
 import src.Model.JSON.ModelDragonJSON;
@@ -21,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
 
         // PREPARING THE GAME...
-        Model model = new Model();
+        Data model = new Data();
         model.Complete();
         Setup setup = new Setup();
         setup.Complete();
@@ -32,10 +34,22 @@ public class Main {
         // Menu menu = new Menu();
         // menu.userAuth();
 
-        // System.out.println("Login Success ! Welcome to Dragon Game " + Model.player.getUsername());
+        // System.out.println("Login Success ! Welcome to Dragon Game " +
+        // Model.player.getUsername());
 
         // Run the battle
-        Battle battle = new Battle(Model.dragonList.getDragon(0), Model.dragonList.getDragon(1));
+
+        Data.setPlayer(Data.playerList.getPlayer(0));
+
+        ArrayList<Dragon> player = new ArrayList<>();
+        player.add(Data.dragonList.getDragon(0));
+        player.add(Data.dragonList.getDragon(1));
+
+        ArrayList<Dragon> bot = new ArrayList<>();
+        bot.add(Data.dragonList.getDragon(1));
+        bot.add(Data.dragonList.getDragon(0));
+
+        Battle battle = new Battle(player, bot);
         battle.startBattle();
 
         // DONE

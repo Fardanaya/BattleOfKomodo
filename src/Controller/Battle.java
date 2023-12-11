@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import src.Node.Data.Dragon;
-import src.Node.Data.Skill;
-import src.View.ClearScreen;
+import src.Node.Data.*;
+import src.View.Game;
 import src.Node.Data.Element;
 
 public class Battle {
@@ -32,14 +31,16 @@ public class Battle {
         return dragons.stream().anyMatch(d -> d.getBattleHP() > 0);
     }
 
-    private ArrayList<Integer> getDeadDragonIndices(ArrayList<Dragon> dragons) {
-        ArrayList<Integer> deadIndices = new ArrayList<>();
-        for (int i = 0; i < dragons.size(); i++) {
-            if (dragons.get(i).getBattleHP() <= 0) {
-                deadIndices.add(i);
+    private ArrayList<Integer> aliveDragonIndices(ArrayList<Dragon> dragons) {
+        ArrayList<Integer> aliveIndices = new ArrayList<>();
+        int index = 0;
+        for (Dragon dragon : dragons) {
+            if (dragon.getBattleHP() > 0) {
+                aliveIndices.add(index);
             }
+            index++;
         }
-        return deadIndices;
+        return aliveIndices;
     }
 
     // FIXME: fix battle logic
@@ -51,17 +52,17 @@ public class Battle {
         int turn = 1;
 
         while (isAlive(player) && isAlive(bot)) {
-            
+
             if (turn % 2 == 0) {
-                ClearScreen.clearConsole();
+                Game.cls();
             }
-            
+
             attack(attacker, defender);
             switchTurn();
             turn++;
-            
+
             System.out.println(playerTurn ? "Player's Turn" : "Bot's Turn");
-            // Update attacker and defender for the next turn
+
             attacker = playerTurn ? selectDragon("player", player) : selectDragon("bot", bot);
             defender = playerTurn ? selectDragon("bot", bot) : selectDragon("player", player);
         }
@@ -69,21 +70,18 @@ public class Battle {
         displayBattleResult();
     }
 
-    private Dragon selectDragon(String who, ArrayList<Dragon> dragon) {
+    private Dragon selectDragon(String who, ArrayList<Dragon> dragons) {
         List<String> listDragon = new ArrayList<>();
-
-        for (Dragon d : dragon) {
-            listDragon.add(d.getName());
-        }
+        ArrayList<Integer> aliveDragonIndices = aliveDragonIndices(dragons);
 
         int selectedDragon;
         if (who.equals("player")) {
             selectedDragon = Data.input.getMenuUserInput("Select Dragon", listDragon.toArray(new String[0])) - 1;
         } else {
-            selectedDragon = new Random().nextInt(dragon.size());
+            selectedDragon = aliveDragonIndices.get(new Random().nextInt(aliveDragonIndices.size()));
         }
 
-        return dragon.get(selectedDragon);
+        return dragons.get(selectedDragon);
     }
 
     private void takeDamage(Dragon dragon, int damage) {
@@ -109,19 +107,20 @@ public class Battle {
     }
 
     private int calculateDamage(Element attackerElement, Element defenderElement, int damage) {
-        // Menghitung kerusakan berdasarkan hubungan elemen
         double damageMultiplier;
-
-        if (defenderElement.isWeakAgainst(attackerElement)) {
-            damageMultiplier = 0.5; // Weak: Causes only half damage (50%)
-        } else if (defenderElement.isStrongAgainst(attackerElement)) {
-            damageMultiplier = 2.0; // Strong: Causes double damage (200%)
-        } else {
-            damageMultiplier = 1.0; // Normal: Causes normal damage (100%)
+        switch (attackerElement.compare(defenderElement)) {
+            case "weak":
+                damageMultiplier = 0.5; // Weak: Causes only half damage (50%)
+                break;
+            case "normal":
+                damageMultiplier = 1.0; // No damage
+                break;
+            case "strong":
+                damageMultiplier = 2.0; // Strong: Causes double damage (200%)
+                break;
+            default:
+                damageMultiplier = 0.0; // Normal: Causes normal damage (100%)
         }
-
-        System.out.println(damageMultiplier);
-
         return (int) (damage * damageMultiplier);
     }
 
@@ -139,7 +138,7 @@ public class Battle {
 
     private void displayBattleResult() {
         if (!isAlive(player)) {
-            System.out.println("Game Over! " + Data.player.getNickname() + " has been defeated.");
+            System.out.println("Game Over! " + Data.player.getAccount().getNickname() + " has been defeated.");
         } else if (!isAlive(bot)) {
             System.out.println("Congratulations! You have defeated the bot.");
         } else {

@@ -2,7 +2,37 @@
   {
     "id": 0,
     "name": "Lava Balls",
-    "damage": 550
+    "damage": 5
+  },
+  {
+    "id": 1,
+    "name": "Flood",
+    "damage": 7
+  },
+  {
+    "id": 0,
+    "name": "Fireball",
+    "damage": 5
+  },
+  {
+    "id": 1,
+    "name": "Flood",
+    "damage": 7
+  },
+  {
+    "id": 0,
+    "name": "Fireball",
+    "damage": 5
+  },
+  {
+    "id": 1,
+    "name": "Flood",
+    "damage": 7
+  },
+  {
+    "id": 0,
+    "name": "Fireball",
+    "damage": 5
   },
   {
     "id": 1,

@@ -22,12 +22,17 @@ public class Input {
     }
 
     public int getMenuUserInput(String title, String[] menuOptions) {
-        System.out.println(title);
+
+        String leftAlignFormat = "| %-30s |%n";
+
+        System.out.format("+--------------------------------+%n");
+        System.out.format(leftAlignFormat, title);
+        System.out.format("+--------------------------------+%n");
         for (int i = 0; i < menuOptions.length; i++) {
-            System.out.println(i+1 + ". " + menuOptions[i]);
+            System.out.format(leftAlignFormat, i + 1 + ". " + menuOptions[i]);
         }
-        System.out.println();
-        System.out.print("[ + ] Select :");
+        System.out.format("+--------------------------------+%n");
+        System.out.print("| -> ");
         return input.nextInt();
     }
 }

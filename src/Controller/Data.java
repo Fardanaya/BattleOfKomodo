@@ -5,7 +5,7 @@ import src.Model.Data.*;
 import src.Node.Data.Player;
 
 import src.View.Input;
-import src.View.Message;
+import src.View.Game;
 
 public class Data {
     // REQUIRED BY GAME
@@ -21,7 +21,7 @@ public class Data {
     // REQUIRED USER
     public static Player player;
 
-    Message gameMessage = new Message();
+    Game gameMessage = new Game();
 
     public Data() {
         gameMessage.alert("Loading Data...");

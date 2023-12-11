@@ -3,41 +3,25 @@ package src.Node.Data;
 import java.util.ArrayList;
 
 public class Player {
-    private String nickname;
     private String username;
     private String password;
+    private Account account;
+    private ArrayList<Dragon> dragon;
 
-    // TODO ARRAYLIST DRAGON
-    private ArrayList<Dragon> dragon = new ArrayList<>();
-    
     // register
     public Player(String username, String password) {
-        this.nickname = "Player";
         this.username = username;
         this.password = password;
-    }
-
-    // new player
-    public Player(String nickname, String username, String password) {
-        this.nickname = nickname;
-        this.username = username;
-        this.password = password;
+        this.dragon = new ArrayList<>();
+        this.account = new Account();
     }
 
     // login
-    public Player(String nickname, String username, String password, ArrayList<Dragon> dragon) {
-        this.nickname = nickname;
+    public Player(String username, String password, Account account, ArrayList<Dragon> dragon) {
         this.username = username;
         this.password = password;
+        this.account = account;
         this.dragon = dragon;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getNickname() {
-        return nickname;
     }
 
     public String getUsername() {
@@ -46,6 +30,14 @@ public class Player {
 
     public String getPassword() {
         return password;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public int searchDragon(String name) {

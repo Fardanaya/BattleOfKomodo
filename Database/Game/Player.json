@@ -1,34 +1,12 @@
 [
   {
-    "nickname": "Player",
     "username": "admin",
     "password": "admin",
-    "dragon": [
-      {
-        "id": "volcanodragon",
-        "name": "Flame Dragon",
-        "level": 1,
-        "currentHP": 1,
-        "maxHP": 1,
-        "experience": 1,
-        "element": {
-          "id": "fire",
-          "name": "Fire",
-          "weakness": "water",
-          "strength": "nature"
-        },
-        "age": {
-          "id": "egg",
-          "stageName": "Egg"
-        },
-        "skills": [
-          {
-            "id": 0,
-            "name": "Fireball",
-            "startPoint": 5
-          }
-        ]
-      }
-    ]
+    "account": {
+      "level": 1,
+      "coin": 1000,
+      "exp": 0
+    },
+    "dragon": []
   }
 ]

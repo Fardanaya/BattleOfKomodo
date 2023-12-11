@@ -2,26 +2,30 @@ package src.Node.Data;
 
 import java.util.ArrayList;
 
-import com.google.gson.JsonElement;
-
 public class Dragon {
     // TODO : SKILL , ELEMEN , AGE
 
     private String id;
     private String name;
-    private int level;
-    private int battleHP;
-    private int HP;
-    private int maxHP;
-    private int experience;
+    private int level = 0;
+    private int battleHP = 0;
+    private int HP = 0;
+    private int maxHP = 0;
+    private int experience = 0;
     private Element element;
     private Age age;
     private Skill skill;
 
     private ArrayList<Skill> skills = new ArrayList<>();
 
-    public Dragon(String id, String name, int level, int HP,
-            int maxHP, int experience, Element element, Age age) {
+    public Dragon(String id, String name, Element element, Age age) {
+        this.id = id;
+        this.name = name;
+        this.element = element;
+        this.age = age;
+    }
+
+    public Dragon(String id, String name, int level, int HP, int maxHP, int experience, Element element, Age age) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -51,7 +55,7 @@ public class Dragon {
     public int getBattleHP() {
         return battleHP;
     }
-    
+
     public int getHP() {
         return HP;
     }

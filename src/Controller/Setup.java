@@ -5,60 +5,96 @@ import src.Node.Data.Dragon;
 import src.Node.Data.Element;
 import src.Node.Data.Player;
 import src.Node.Data.Skill;
-import src.View.Message;
+import src.View.Game;
 
 public class Setup {
 
-    private Message gameMessage = new Message();
+        private Game gameMessage = new Game();
 
-    public Setup() {
+        public Setup() {
 
-        setupElement();
-        setupAge();
-        setupSkill();
+                // SAVED INTO MEMORY
+                setupElement();
+                setupAge();
+                setupSkill();
 
-        // setupDragon(); // TODO : SEKALI SAJA KLO BELUM ADA DATA
-        // testSetupPlayer(); // TODO : SEKALI SAJA KLO BELUM ADA DATA
-    }
+                // setupDragon(); // TODO : SEKALI SAJA KLO BELUM ADA DATA
+                // testSetupPlayer(); // TODO : SEKALI SAJA KLO BELUM ADA DATA
+        }
 
-    private void setupElement() {
-        Data.element.addElement(new Element("fire", "Fire", "water", "nature"));
-        Data.element.addElement(new Element("water", "Water", "nature", "fire"));
-        Data.element.addElement(new Element("nature", "Nature", "fire", "water"));
-    }
+        private void setupElement() {
+                Data.element.addElement(
+                                new Element(
+                                                "flame",
+                                                "Flame",
+                                                new String[] { "water" },
+                                                new String[] { "nature", "ice" }));
 
-    private void setupAge() {
-        Data.age.addAge(new Age("egg", "Egg"));
-        Data.age.addAge(new Age("baby", "Baby"));
-        Data.age.addAge(new Age("young", "Muda"));
-        Data.age.addAge(new Age("adult", "Dewasa"));
-    }
+                Data.element.addElement(
+                                new Element(
+                                                "water",
+                                                "Water",
+                                                new String[] { "nature", "electric" },
+                                                new String[] { "fire" }));
 
-    private void setupDragon() {
-        Data.dragonList.addDragon(new Dragon("volcanodragon", "Flame Dragon", 1, 1, 1, 1,
-                Data.element.getElement(Data.element.searchElement("fire")),
-                Data.age.getAge(Data.age.searchAge("egg"))));
+                Data.element.addElement(
+                                new Element(
+                                                "nature",
+                                                "Nature",
+                                                new String[] { "fire", "ice" },
+                                                new String[] { "water" }));
 
-        Data.dragonList.addDragon(new Dragon("icedragon", "Ice Dragon", 1, 1, 1, 1,
-                Data.element.getElement(Data.element.searchElement("water")),
-                Data.age.getAge(Data.age.searchAge("egg"))));
+                Data.element.addElement(
+                                new Element("earth",
+                                                "Earth",
+                                                new String[] {},
+                                                new String[] { "electric" }));
 
-        Data.dragonList.addDragon(new Dragon("tropicaldragon", "Tropical Dragon", 1, 1, 1, 1,
-                Data.element.getElement(Data.element.searchElement("nature")),
-                Data.age.getAge(Data.age.searchAge("egg"))));
+                Data.element.addElement(
+                                new Element("electric",
+                                                "Electric",
+                                                new String[] { "earth" },
+                                                new String[] { "water" }));
 
-    }
+                Data.element.addElement(
+                                new Element("ice",
+                                                "Ice",
+                                                new String[] { "fire" },
+                                                new String[] { "nature" }));
+        }
 
-    public void setupSkill() {
-        Data.skillList.addSkill(new Skill(0, "Fireball", 5));
-        Data.skillList.addSkill(new Skill(1, "Flood", 7));
-    }
+        private void setupAge() {
+                Data.age.addAge(new Age("egg", "Egg"));
+                Data.age.addAge(new Age("baby", "Baby"));
+                Data.age.addAge(new Age("young", "Muda"));
+                Data.age.addAge(new Age("adult", "Dewasa"));
+        }
 
-    public void testSetupPlayer() {
-        Data.playerList.addPlayer(new Player("admin", "admin"));
-    }
-    
-    public void Complete() {
-        gameMessage.alert("Successfully Load Data !");
-    }
+        private void setupDragon() {
+                Data.dragonList.addDragon(new Dragon("volcanodragon", "Flame Dragon",
+                                Data.element.getElement(Data.element.searchElement("flame")),
+                                Data.age.getAge(Data.age.searchAge("egg"))));
+
+                Data.dragonList.addDragon(new Dragon("icedragon", "Ice Dragon",
+                                Data.element.getElement(Data.element.searchElement("ice")),
+                                Data.age.getAge(Data.age.searchAge("egg"))));
+
+                Data.dragonList.addDragon(new Dragon("tropicaldragon", "Tropical Dragon",
+                                Data.element.getElement(Data.element.searchElement("nature")),
+                                Data.age.getAge(Data.age.searchAge("egg"))));
+
+        }
+
+        public void setupSkill() {
+                Data.skillList.addSkill(new Skill(0, "Fireball", 5));
+                Data.skillList.addSkill(new Skill(1, "Flood", 7));
+        }
+
+        public void testSetupPlayer() {
+                Data.playerList.addPlayer(new Player("admin", "admin"));
+        }
+
+        public void Complete() {
+                gameMessage.alert("Successfully Load Data !");
+        }
 }

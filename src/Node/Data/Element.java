@@ -33,15 +33,15 @@ public class Element {
     }
 
     // Battle System
-    public String compare(Element opponent) {
+    public double compare(Element opponent) {
         if (opponent.getWeak().contains(this.getName())) {
-            return "weak";
+            return 0.5;
         } else if (opponent.getStrong().contains(this.getName())) {
-            return "strong";
+            return 2.0;
         } else if (opponent.getId().equals(this.getId())) {
-            return "nothing";
+            return 0.0;
         } else {
-            return "normal";
+            return 1.0;
         }
     }
     

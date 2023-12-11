@@ -28,8 +28,6 @@ public class viewData {
         System.out.println("Dragon ID : " + dragon.getId());
         System.out.println("Dragon Name : " + dragon.getName());
         System.out.println("Dragon Level : " + dragon.getLevel());
-        // System.out.println("Dragon Attack : " + dragon.getAttack());
-        // System.out.println("Dragon Defense : " + dragon.getDefense());
         System.out.println("Dragon Current HP : " + dragon.getBattleHP());
         System.out.println("Dragon Max HP : " + dragon.getMaxHP());
         System.out.println("Dragon Experience : " + dragon.getExperience());
@@ -39,6 +37,9 @@ public class viewData {
         System.out.println("   Strength : " + dragon.getElement().getStrong());
         System.out.println("Dragon Age Stage : ");
         System.out.println("   Age : " + dragon.getAgeStage().getStageName());
+        System.out.println("Dragon Skill : ");
+        System.out.println("   Skill : " + dragon.getSkill());
+        System.out.println("   Skill Base Power : " + dragon.getSkill());
     }
 
     public void showDragon(Dragon dragon) {

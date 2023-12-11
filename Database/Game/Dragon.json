@@ -4,7 +4,7 @@
     "name": "Flame Dragon",
     "level": 0,
     "battleHP": 0,
-    "HP": 0,
+    "HP": 20,
     "maxHP": 1000,
     "experience": 0,
     "element": {
@@ -22,14 +22,20 @@
       "id": "egg",
       "stageName": "Egg"
     },
-    "skills": []
+    "skills": [
+      {
+        "id": 0,
+        "name": "Lava Balls",
+        "damage": 5
+      }
+    ]
   },
   {
     "id": "icedragon",
     "name": "Ice Dragon",
     "level": 0,
     "battleHP": 0,
-    "HP": 0,
+    "HP": 20,
     "maxHP": 1000,
     "experience": 0,
     "element": {
@@ -46,7 +52,13 @@
       "id": "egg",
       "stageName": "Egg"
     },
-    "skills": []
+    "skills": [
+      {
+        "id": 1,
+        "name": "Flood",
+        "damage": 5
+      }
+    ]
   },
   {
     "id": "tropicaldragon",

@@ -32,7 +32,19 @@ public class Input {
             System.out.format(leftAlignFormat, i + 1 + ". " + menuOptions[i]);
         }
         System.out.format("+--------------------------------+%n");
-        System.out.print("| -> ");
-        return input.nextInt();
+
+        while (true) {
+            System.out.print("| -> ");
+            try {
+                int userInput = Integer.parseInt(input.nextLine());
+                if (userInput >= 1 && userInput <= menuOptions.length) {
+                    return userInput;
+                } else {
+                    System.out.println("Invalid input. Please try again.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please try again.");
+            }
+        }
     }
 }

@@ -31,7 +31,12 @@ public class Data {
         gameMessage.alert("Successfully Load Data !");
     }
 
+    public static Player getPlayer() {
+        return player;
+    }
+    
     public static void setPlayer(Player player) {
         Data.player = player;
     }
+
 }

@@ -14,7 +14,6 @@ public class Dragon {
     private int experience = 0;
     private Element element;
     private Age age;
-    private Skill skill;
 
     private ArrayList<Skill> skills = new ArrayList<>();
 
@@ -34,6 +33,21 @@ public class Dragon {
         this.maxHP = maxHP;
         this.experience = experience;
         this.age = age;
+    }
+
+
+    // CLONING
+    public Dragon(String id, String name, int level, int HP, int maxHP, int experience, Element element, Age age,
+            ArrayList<Skill> skills) {
+        this.id = id;
+        this.name = name;
+        this.level = level;
+        this.element = element;
+        this.HP = HP;
+        this.maxHP = maxHP;
+        this.experience = experience;
+        this.age = age;
+        this.skills = skills;
     }
 
     public String getId() {
@@ -76,12 +90,12 @@ public class Dragon {
         return age;
     }
 
-    public Skill getSkill() {
-        return skill;
+    public ArrayList<Skill> getSkill() {
+        return skills;
     }
 
-    public void setSkill(Skill skill) {
-        this.skill = skill;
+    public void setSkill(ArrayList<Skill> skills) {
+        this.skills = skills;
     }
 
     public Skill getSkill(int index) {
@@ -100,4 +114,7 @@ public class Dragon {
     // this.skills.set(index, skill);
     // }
 
+    public Dragon clone() {
+        return new Dragon(this.id, this.name, this.level, this.HP, this.maxHP, this.experience, this.element, this.age, this.skills);
+    }
 }

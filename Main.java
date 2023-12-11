@@ -15,20 +15,18 @@ public class Main {
         // SUCCESSFULLY LOADED...
 
         // TESTING
-        // testing.test();
+        testing.test();
 
         // PROGRAM
-        User user = new User();
-        user.userAuth();
+        // User user = new User();
+        // user.userAuth();
 
-        viewData playermenu = new viewData();
-        playermenu.showPlayerDetails(Data.player);;
-
-        
+        // viewData playermenu = new viewData();
+        // playermenu.showPlayerDetails(Data.player);;
 
         // SAVING DATA TO JSON FILE
-        // Data.dragonList.saveData();
         // Data.skillList.saveData();
-        // Data.playerList.saveData();
+        // Data.dragonList.saveData();
+        Data.playerList.saveData();
     }
 }

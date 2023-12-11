@@ -28,4 +28,13 @@ public class Element {
     public String getStrength() {
         return strength;
     }
+
+    // Battle System
+    public boolean isWeakAgainst(Element element) {
+        return weakness.contains(element.getId());
+    }
+
+    public boolean isStrongAgainst(Element element) {
+        return strength.contains(element.getId());
+    }
 }

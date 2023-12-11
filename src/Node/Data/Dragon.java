@@ -51,6 +51,10 @@ public class Dragon {
         return currentHP;
     }
 
+    public void setCurrentHP(int currentHP) {
+        this.currentHP = currentHP;
+    }
+
     public int getMaxHP() {
         return maxHP;
     }
@@ -70,7 +74,7 @@ public class Dragon {
     public void setSkill(Skill skill) {
         this.skill = skill;
     }
-    
+
     public Skill getSkill(int index) {
         return skills.get(index);
     }
@@ -84,7 +88,7 @@ public class Dragon {
     }
 
     // public void updateSkill(int index, Skill skill) {
-    //     this.skills.set(index, skill);
+    // this.skills.set(index, skill);
     // }
-    
+
 }

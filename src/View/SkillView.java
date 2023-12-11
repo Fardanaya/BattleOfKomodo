@@ -7,12 +7,12 @@ public class SkillView {
     public void showSkillDetails(Skill skill) {
         System.out.println("Skill ID : " + skill.getId());
         System.out.println("Skill Name : " + skill.getName());
-        System.out.println("Skill Base Power : " + skill.getStartPoint());
+        System.out.println("Skill Base Power : " + skill.getDamage());
     }
 
     public void showSkill(Skill skill) {
         System.out.println("Skill Name : " + skill.getName());
-        System.out.println("Skill Damage : " + skill.getStartPoint());
+        System.out.println("Skill Damage : " + skill.getDamage());
     }
 
     public void showAllSkillDetails(ArrayList<Skill> skillList) {

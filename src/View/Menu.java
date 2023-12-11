@@ -1,30 +1,49 @@
 package src.View;
 
-import src.Controller.Model;
+import src.Controller.User;
 
 public class Menu {
 
-    public void mainMenu()  {
-        System.out.println("===MAIN MENU===");
-        String[] Menu = {"Tarung", "Latih", "Zoo", "Market", "Keluar"};
-        ArrowMenu arrowMenu = new ArrowMenu(Menu);
-        int selectedOption = arrowMenu.runMenu();
+    private Input menu;
+
+    public Menu() {
+        this.menu = new Input();
+    }
+
+    public void userAuth() {
+        String title = "Welcome to Dragon Game";
+        String[] Menu = { "Register", "Login", "Keluar" };
+
+        int selectedOption = menu.getMenuUserInput(title, Menu);
+
+        User user = new User();
+        user.userAuth(selectedOption);
+
         System.out.println("Selected option : " + selectedOption);
     }
 
-    public void latih(){
+    public void mainMenu() {
+        String title = "Main Menu";
+        String[] Menu = { "Tarung", "Latih", "Zoo", "Market", "Keluar" };
+
+        int selectedOption = menu.getMenuUserInput(title, Menu);
+
+        System.out.println("Selected option : " + selectedOption);
+    }
+
+    public void latih() {
         System.out.println("===LATIH===");
         // Model.dragonList.showDragonList(); // FIXME : METHOD CHANGED
         // TODO dijadikan selector
     }
 
-    public void zoo(){
+    public void zoo() {
         System.out.println("===ZOO===");
         // Model.dragonList.showDragonList(); // FIXME : METHOD CHANGED
         // TODO dijadikan selector
     }
 
-    public void market(){
+    public void market() {
         System.out.println("===MARKET===");
         // TODO call func for print all komodo that available in market
     }

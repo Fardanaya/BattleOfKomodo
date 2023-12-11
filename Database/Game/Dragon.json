@@ -3,8 +3,8 @@
     "id": "volcanodragon",
     "name": "Flame Dragon",
     "level": 1,
-    "currentHP": 1,
-    "maxHP": 1,
+    "currentHP": 30,
+    "maxHP": 100,
     "experience": 1,
     "element": {
       "id": "fire",
@@ -20,7 +20,7 @@
       {
         "id": 0,
         "name": "Fireball",
-        "startPoint": 5
+        "damage": 5
       }
     ]
   },
@@ -28,8 +28,8 @@
     "id": "icedragon",
     "name": "Ice Dragon",
     "level": 1,
-    "currentHP": 1,
-    "maxHP": 1,
+    "currentHP": 30,
+    "maxHP": 100,
     "experience": 1,
     "element": {
       "id": "water",
@@ -41,7 +41,13 @@
       "id": "egg",
       "stageName": "Egg"
     },
-    "skills": []
+    "skills": [
+      {
+        "id": 1,
+        "name": "Waterfall",
+        "damage": 5
+      }
+    ]
   },
   {
     "id": "tropicaldragon",

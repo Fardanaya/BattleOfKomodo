@@ -2,11 +2,11 @@
   {
     "id": 0,
     "name": "Fireball",
-    "startPoint": 5
+    "damage": 5
   },
   {
     "id": 1,
     "name": "Flood",
-    "startPoint": 7
+    "damage": 7
   }
 ]

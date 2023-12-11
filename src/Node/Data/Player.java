@@ -9,7 +9,7 @@ public class Player {
 
     // TODO ARRAYLIST DRAGON
     private ArrayList<Dragon> dragon = new ArrayList<>();
-
+    
     // register
     public Player(String username, String password) {
         this.nickname = "Player";
@@ -17,11 +17,19 @@ public class Player {
         this.password = password;
     }
 
-    // first login
+    // new player
     public Player(String nickname, String username, String password) {
         this.nickname = nickname;
         this.username = username;
         this.password = password;
+    }
+
+    // login
+    public Player(String nickname, String username, String password, ArrayList<Dragon> dragon) {
+        this.nickname = nickname;
+        this.username = username;
+        this.password = password;
+        this.dragon = dragon;
     }
 
     public void setNickname(String nickname) {
@@ -56,7 +64,7 @@ public class Player {
     public ArrayList<Dragon> getAllDragon() {
         return dragon;
     }
-    
+
     public void addDragonToPlayer(Dragon Dragon) {
         this.dragon.add(Dragon);
     }

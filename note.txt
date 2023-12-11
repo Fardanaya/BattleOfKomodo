@@ -1,0 +1,1 @@
+age di controller nanti kalo tambah xp habis battle ata habis train ada triger pengecekan

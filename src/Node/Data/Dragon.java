@@ -11,6 +11,7 @@ public class Dragon {
     private String name;
     private int level;
     private int currentHP;
+    private int HP;
     private int maxHP;
     private int experience;
     private Element element;
@@ -19,13 +20,13 @@ public class Dragon {
 
     private ArrayList<Skill> skills = new ArrayList<>();
 
-    public Dragon(String id, String name, int level, int currentHP,
+    public Dragon(String id, String name, int level, int HP,
             int maxHP, int experience, Element element, Age age) {
         this.id = id;
         this.name = name;
         this.level = level;
         this.element = element;
-        this.currentHP = currentHP;
+        this.HP = HP;
         this.maxHP = maxHP;
         this.experience = experience;
         this.age = age;
@@ -49,6 +50,10 @@ public class Dragon {
 
     public int getCurrentHP() {
         return currentHP;
+    }
+    
+    public int getHP() {
+        return HP;
     }
 
     public void setCurrentHP(int currentHP) {

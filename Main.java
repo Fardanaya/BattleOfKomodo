@@ -1,4 +1,5 @@
 import src.Controller.Auth;
+import src.Controller.Battle;
 import src.Controller.Model;
 import src.Controller.Setup;
 import src.Model.Data.ModelDragon;
@@ -8,7 +9,6 @@ import src.Node.Data.Skill;
 import src.Node.Data.Player;
 import src.Node.Data.Element;
 import src.Node.Data.Age;
-import src.Node.Data.Battle;
 import src.Node.Data.Dragon;
 import src.View.ClearScreen;
 import src.View.DragonView;

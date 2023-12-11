@@ -1,40 +1,51 @@
 // Battle.java
-package src.Node.Data;
+package src.Controller;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class Battle {
-    private Dragon player;
-    private int maxPlayerHP;
+import src.Node.Data.Dragon;
+import src.Node.Data.Element;
+import src.Node.Data.Skill;
 
-    private Dragon bot;
-    private int maxBotHP;
+public class Battle {
+    private ArrayList<Dragon> player;
+    private ArrayList<Dragon> bot;
 
     private boolean playerTurn;
 
-    public Battle(Dragon player, Dragon bot) {
+    public Battle(ArrayList<Dragon> player, ArrayList<Dragon> bot) {
         this.player = player;
         this.bot = bot;
-        this.playerTurn = true;
-
-        this.maxPlayerHP = player.getCurrentHP();
-        this.maxBotHP = bot.getCurrentHP();
+        this.playerTurn = true; //TODO : mini game coin which one play first, make a funct to randomize it
+        setCurrentHP(player);
+        setCurrentHP(bot);
     }
 
-    private boolean isAlive(Dragon dragon) {
-        return dragon.getCurrentHP() > 0;
+    private void setCurrentHP(ArrayList<Dragon> nagas) {
+        for(Dragon dragon: nagas){
+            dragon.setCurrentHP(dragon.getHP());
+        }
     }
 
+    private boolean isAlive(ArrayList<Dragon> dragon) {
+        for (Dragon d : dragon) {
+            if (d.getCurrentHP() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
     public void startBattle() {
         while (isAlive(player) && isAlive(bot)) {
             if (playerTurn) {
-                playerAttack();
+                // TODO: call dragon selector
+                playerAttack(dragon);
             } else {
                 botAttack();
             }
             switchTurn();
         }
-
         displayBattleResult();
     }
 
@@ -45,14 +56,14 @@ public class Battle {
         ;
     }
 
-    private void playerAttack() {
-        Skill playerSkill = chooseSkill(player);
+    private void playerAttack(Dragon dragon, Dragon bot) {
+        Skill dragonSkill = chooseSkill(dragon);
 
-        int damage = calculateDamage(player.getElement(), bot.getElement(), playerSkill.getDamage());
+        int damage = calculateDamage(dragon.getElement(), bot.getElement(), dragonSkill.getDamage());
 
         takeDamage(bot, damage);
 
-        displayBattleInfo(player, playerSkill, bot, damage);
+        displayBattleInfo(dragon, dragonSkill, bot, damage);
     }
 
     private void botAttack() {
@@ -100,7 +111,7 @@ public class Battle {
 
     private void displayBattleResult() {
         if (!isAlive(player)) {
-            System.out.println("Game Over! " + player.getName() + " has been defeated.");
+            System.out.println("Game Over! " + Model.player.getNickname() + " has been defeated.");
         } else if (!isAlive(bot)) {
             System.out.println("Congratulations! You have defeated the bot.");
         } else {

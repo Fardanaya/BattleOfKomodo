@@ -86,8 +86,8 @@ public class Setup {
         }
 
         public void setupSkill() {
-                Data.skillList.addSkill(new Skill(0, "Fireball", 5));
-                Data.skillList.addSkill(new Skill(1, "Flood", 7));
+                Data.skillList.addSkill(new Skill(0, "Fireball", 5, 0));
+                Data.skillList.addSkill(new Skill(1, "Flood", 7, 0));
         }
 
         public void testSetupPlayer() {

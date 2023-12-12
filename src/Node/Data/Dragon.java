@@ -2,26 +2,29 @@ package src.Node.Data;
 
 import java.util.ArrayList;
 
-import com.google.gson.JsonElement;
-
 public class Dragon {
     // TODO : SKILL , ELEMEN , AGE
 
     private String id;
     private String name;
-    private int level;
-    private int battleHP;
-    private int HP;
-    private int maxHP;
-    private int experience;
+    private int level = 0;
+    private int battleHP = 0;
+    private int HP = 0;
+    private int maxHP = 0;
+    private int experience = 0;
     private Element element;
     private Age age;
-    private Skill skill;
 
     private ArrayList<Skill> skills = new ArrayList<>();
 
-    public Dragon(String id, String name, int level, int HP,
-            int maxHP, int experience, Element element, Age age) {
+    public Dragon(String id, String name, Element element, Age age) {
+        this.id = id;
+        this.name = name;
+        this.element = element;
+        this.age = age;
+    }
+
+    public Dragon(String id, String name, int level, int HP, int maxHP, int experience, Element element, Age age) {
         this.id = id;
         this.name = name;
         this.level = level;
@@ -30,6 +33,21 @@ public class Dragon {
         this.maxHP = maxHP;
         this.experience = experience;
         this.age = age;
+    }
+
+
+    // CLONING
+    public Dragon(String id, String name, int level, int HP, int maxHP, int experience, Element element, Age age,
+            ArrayList<Skill> skills) {
+        this.id = id;
+        this.name = name;
+        this.level = level;
+        this.element = element;
+        this.HP = HP;
+        this.maxHP = maxHP;
+        this.experience = experience;
+        this.age = age;
+        this.skills = skills;
     }
 
     public String getId() {
@@ -51,7 +69,7 @@ public class Dragon {
     public int getBattleHP() {
         return battleHP;
     }
-    
+
     public int getHP() {
         return HP;
     }
@@ -72,12 +90,12 @@ public class Dragon {
         return age;
     }
 
-    public Skill getSkill() {
-        return skill;
+    public ArrayList<Skill> getSkill() {
+        return skills;
     }
 
-    public void setSkill(Skill skill) {
-        this.skill = skill;
+    public void setSkill(ArrayList<Skill> skills) {
+        this.skills = skills;
     }
 
     public Skill getSkill(int index) {
@@ -96,4 +114,7 @@ public class Dragon {
     // this.skills.set(index, skill);
     // }
 
+    public Dragon clone() {
+        return new Dragon(this.id, this.name, this.level, this.HP, this.maxHP, this.experience, this.element, this.age, this.skills);
+    }
 }

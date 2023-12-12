@@ -17,12 +17,12 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import src.Node.Data.Dragon;
-import src.View.Message;
+import src.View.Game;
 
 public class ModelDragonJSON {
 
     String fname = "database/Game/Dragon.json";
-    Message gameMessage = new Message();
+    Game gameMessage = new Game();
 
     public ModelDragonJSON() {
         setupFile();

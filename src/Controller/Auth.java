@@ -1,8 +1,7 @@
 package src.Controller;
 
 import src.Node.Data.Player;
-import src.View.ClearScreen;
-import src.View.Input;
+import src.View.*;
 
 public class Auth {
     Input prompt = new Input();
@@ -13,7 +12,7 @@ public class Auth {
         do {
             username = prompt.getUserInput("Username : ");
             if (Data.playerList.searchPlayer(username) != -1) {
-                ClearScreen.clearConsole();
+                Game.cls();
                 System.out.println("Username sudah terdaftar. Silakan coba lagi.");
                 continue;
             }
@@ -22,7 +21,7 @@ public class Auth {
         do {
             password = prompt.getPasswordInput("password: ");
             if (password.length() < 8 || !containLetterAndDigit(password)) {
-                ClearScreen.clearConsole();
+                Game.cls();
                 System.out.println("password harus lebih dari 8 karakter dan terdiri dari huruf dan angka");
                 System.out.println("REGISTRASI");
                 System.out.println("Username : " + username);
@@ -33,7 +32,7 @@ public class Auth {
         do {
             verifpass = prompt.getPasswordInput("ulang password");
             if (!password.equals(verifpass)) {
-                ClearScreen.clearConsole();
+                Game.cls();
                 System.out.println("Password tidak cocok. Silakan coba lagi.");
                 System.out.println("REGISTRASI");
                 System.out.println("Username : " + username);

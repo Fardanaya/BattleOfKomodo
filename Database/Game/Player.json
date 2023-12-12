@@ -1,21 +1,31 @@
 [
   {
-    "nickname": "Player",
     "username": "admin",
     "password": "admin",
+    "account": {
+      "level": 1,
+      "coin": 1000,
+      "exp": 0
+    },
     "dragon": [
       {
         "id": "volcanodragon",
         "name": "Flame Dragon",
-        "level": 1,
-        "currentHP": 1,
-        "maxHP": 1,
-        "experience": 1,
+        "level": 0,
+        "battleHP": 0,
+        "HP": 20,
+        "maxHP": 1000,
+        "experience": 0,
         "element": {
-          "id": "fire",
-          "name": "Fire",
-          "weakness": "water",
-          "strength": "nature"
+          "id": "flame",
+          "name": "Flame",
+          "weak": [
+            "water"
+          ],
+          "strong": [
+            "nature",
+            "ice"
+          ]
         },
         "age": {
           "id": "egg",
@@ -24,8 +34,38 @@
         "skills": [
           {
             "id": 0,
-            "name": "Fireball",
-            "startPoint": 5
+            "name": "Lava Balls",
+            "damage": 5
+          }
+        ]
+      },
+      {
+        "id": "icedragon",
+        "name": "Ice Dragon",
+        "level": 0,
+        "battleHP": 0,
+        "HP": 20,
+        "maxHP": 1000,
+        "experience": 0,
+        "element": {
+          "id": "ice",
+          "name": "Ice",
+          "weak": [
+            "fire"
+          ],
+          "strong": [
+            "nature"
+          ]
+        },
+        "age": {
+          "id": "egg",
+          "stageName": "Egg"
+        },
+        "skills": [
+          {
+            "id": 1,
+            "name": "Flood",
+            "damage": 5
           }
         ]
       }

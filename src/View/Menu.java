@@ -10,16 +10,14 @@ public class Menu {
         this.menu = new Input();
     }
 
-    public void userAuth() {
+    public int userAuth() {
         String title = "Welcome to Dragon Game";
         String[] Menu = { "Register", "Login", "Keluar" };
 
         int selectedOption = menu.getMenuUserInput(title, Menu);
+        Game.cls();
 
-        User user = new User();
-        user.userAuth(selectedOption);
-
-        System.out.println("Selected option : " + selectedOption);
+        return selectedOption;
     }
 
     public void mainMenu() {

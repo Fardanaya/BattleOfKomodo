@@ -16,12 +16,12 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
-import src.View.Message;
+import src.View.Game;
 import src.Node.Data.Player;
 
 public class ModelPlayerJSON {
 
-    Message gameMessage = new Message();
+    Game gameMessage = new Game();
     String fname = "database/Game/Player.json";
 
     public ModelPlayerJSON() {

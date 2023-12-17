@@ -26,8 +26,9 @@ public class Game {
         String leftAlignFormat = "| %-20s | %-10s |      | %-10s | %-20s |%n";
         System.out.format("+----------------------+------------+      +------------+----------------------+%n");
         for (int i = 0; i < player.size(); i++) {
-            System.out.format(leftAlignFormat, player.get(i).getName(), player.get(i).getBattleHP(),
-                    player.get(i).getBattleHP(), bot.get(i).getName());
+            System.out.format(leftAlignFormat, player.get(i).getName(),
+                    player.get(i).getBattleHP(),
+                    bot.get(i).getBattleHP(), bot.get(i).getName());
         }
         System.out.format("+----------------------+------------+      +------------+----------------------+%n");
 

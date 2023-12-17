@@ -7,6 +7,7 @@ import src.View.Game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.lang.Thread;
 
 public class Battle {
     private List<Dragon> player;
@@ -44,9 +45,19 @@ public class Battle {
     }
 
     public void startBattle() { // FIXME: BUG DRAGON THAT TAKING DAMAGE
+            // TODO: add validation for draw match, if player and bot only have dragon with same element id. 
         System.out.println(playerTurn ? "Player's Turn" : "Bot's Turn");
 
         while (isAlive(player) && isAlive(bot)) {
+            if (!playerTurn) {
+                System.out.println("Enemy Attacking ...");
+                try {
+                    Thread.sleep((new Random().nextInt(3)) * 1000);
+                } catch (Exception e) {
+                    System.out.println();
+                }
+            }
+
             Dragon attacker = selectDragon(playerTurn ? "player" : "bot", playerTurn ? player : bot);
             Dragon defender = selectDragon(playerTurn ? "bot" : "player", playerTurn ? bot : player);
 
@@ -99,7 +110,6 @@ public class Battle {
 
         return (int) (damage * damageMultiplier);
     }
-
 
     private void switchTurn() {
         playerTurn = !playerTurn;

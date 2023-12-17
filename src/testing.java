@@ -22,11 +22,11 @@ public class testing {
         // playermenu.showAllPlayerDetails(Data.playerList.getAllPlayers());
         // Insert Dragon to player
         // Data.playerList.getPlayer(0).addDragonToPlayer(Data.dragonList.getAllDragons().get(1));
+        
+        
+
         // BATTLE
-        // Data.setPlayer(Data.playerList.getPlayer(0));
-        
-        
-        
+        Data.setPlayer(Data.playerList.getPlayer(0));
         ArrayList<Dragon> player = new ArrayList<>();
         player.add(Data.dragonList.getDragon(0));
         player.add(Data.dragonList.getDragon(1));

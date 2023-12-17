@@ -2,11 +2,13 @@
   {
     "id": 0,
     "name": "Lava Balls",
-    "damage": 5
+    "damage": 5,
+    "treshold": 0
   },
   {
     "id": 1,
     "name": "Flood",
-    "damage": 7
+    "damage": 7,
+    "treshold": 0
   }
 ]

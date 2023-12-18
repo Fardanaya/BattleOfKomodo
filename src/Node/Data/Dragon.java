@@ -35,7 +35,6 @@ public class Dragon {
         this.age = age;
     }
 
-
     // CLONING
     public Dragon(String id, String name, int level, int HP, int maxHP, int experience, Element element, Age age,
             ArrayList<Skill> skills) {

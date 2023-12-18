@@ -1,32 +1,35 @@
 package src.Model.Data;
 
 import java.util.ArrayList;
-import src.Model.JSON.ModelPlayerJSON;
-import src.Node.Data.Player;
+
+import com.google.gson.reflect.TypeToken;
+
+import src.Model.JSON.ModelJSON;
+import src.Node.Data.Account;
 
 public class ModelPlayer {
-    public ArrayList<Player> PlayerList;
-    ModelPlayerJSON dataJSON;
+    public ArrayList<Account> PlayerList;
+    ModelJSON<Account> dataJSON;
 
     public ModelPlayer() {
-        this.dataJSON = new ModelPlayerJSON();
+        this.dataJSON = new ModelJSON<>("Database/Game/Player.json");
         fetchJsonData();
     }
 
     public void fetchJsonData() {
-        this.PlayerList = dataJSON.readDataJSON();
+        this.PlayerList = dataJSON.readFromFile(new TypeToken<ArrayList<Account>>() {}.getType());
     }
 
-    public void addPlayer(Player player) {
+    public void addPlayer(Account player) {
         this.PlayerList.add(player);
     }
 
-    public void updatePlayer(int index, Player player) {
+    public void updatePlayer(int index, Account player) {
         this.PlayerList.set(index, player);
     }
 
     public int searchPlayer(String username) {
-        for (Player player : PlayerList) {
+        for (Account player : PlayerList) {
             if (player.getUsername().equals(username)) {
                 return PlayerList.indexOf(player);
             }
@@ -34,17 +37,17 @@ public class ModelPlayer {
         return -1;
     }
 
-    public Player getPlayer(int index) {
+    public Account getPlayer(int index) {
         return PlayerList.get(index);
     }
 
-    public ArrayList<Player> getAllPlayers() {
+    public ArrayList<Account> getAllPlayers() {
         return PlayerList;
     }
 
     public boolean saveData() {
         try {
-            dataJSON.writeDataJSON(PlayerList);
+            dataJSON.writeToFile(PlayerList);
             return true;
         } catch (Exception e) {
             return false;

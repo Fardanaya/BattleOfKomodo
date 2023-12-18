@@ -2,7 +2,7 @@ package src.Controller;
 
 import src.Model.Data.*;
 
-import src.Node.Data.Player;
+import src.Node.Data.Account;
 
 import src.View.Input;
 import src.View.Game;
@@ -19,7 +19,7 @@ public class Data {
     public static ModelDragon dragonList = new ModelDragon();
 
     // REQUIRED USER
-    public static Player player;
+    public static Account player;
 
     Game gameMessage = new Game();
 
@@ -31,11 +31,11 @@ public class Data {
         gameMessage.alert("Successfully Load Data !");
     }
 
-    public static Player getPlayer() {
+    public static Account getPlayer() {
         return player;
     }
     
-    public static void setPlayer(Player player) {
+    public static void setPlayer(Account player) {
         Data.player = player;
     }
 

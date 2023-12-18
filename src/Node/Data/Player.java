@@ -3,41 +3,47 @@ package src.Node.Data;
 import java.util.ArrayList;
 
 public class Player {
-    private String username;
-    private String password;
-    private Account account;
+    private String nickname;
+    private int level = 1;
+    private int coin = 1000;
+    private int exp = 0;
+    
     private ArrayList<Dragon> dragon;
-
-    // register
-    public Player(String username, String password) {
-        this.username = username;
-        this.password = password;
+    
+    public Player() {
         this.dragon = new ArrayList<>();
-        this.account = new Account();
     }
 
-    // login
-    public Player(String username, String password, Account account, ArrayList<Dragon> dragon) {
-        this.username = username;
-        this.password = password;
-        this.account = account;
-        this.dragon = dragon;
+    public String getNickname() {
+        return nickname;
     }
 
-    public String getUsername() {
-        return username;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public String getPassword() {
-        return password;
+    public int getLevel() {
+        return level;
     }
 
-    public Account getAccount() {
-        return account;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public int getCoin() {
+        return coin;
+    }
+
+    public void setCoin(int coin) {
+        this.coin = coin;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
     }
 
     public int searchDragon(String name) {

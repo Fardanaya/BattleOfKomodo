@@ -7,16 +7,16 @@ import src.Node.Data.*;
 public class viewData {
 
     // player
-    public void showPlayerDetails(Player player) {
-        System.out.println("Nickname : " + player.getAccount().getNickname());
+    public void showPlayerDetails(Account player) {
+        System.out.println("Nickname : " + player.getPlayer().getNickname());
         System.out.println("Username : " + player.getUsername());
         System.out.println(
                 "Password : " + player.getPassword().substring(0, 1) + ("*").repeat(player.getPassword().length() - 2)
                         + player.getPassword().substring(player.getPassword().length() - 1));
     }
 
-    public void showAllPlayerDetails(ArrayList<Player> playerList) {
-        for (Player player : playerList) {
+    public void showAllPlayerDetails(ArrayList<Account> playerList) {
+        for (Account player : playerList) {
             System.out.println("========================");
             showPlayerDetails(player);
         }

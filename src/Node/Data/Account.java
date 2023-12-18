@@ -1,40 +1,37 @@
 package src.Node.Data;
 
 public class Account {
-    private String nickname;
-    private int level = 1;
-    private int coin = 1000;
-    private int exp = 0;
+    private String username;
+    private String password;
+    private Player player;
 
-    public String getNickname() {
-        return nickname;
+    // register
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.player = new Player();
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    // login
+    public Account(String username, String password, Player player) {
+        this.username = username;
+        this.password = password;
+        this.player = player;
     }
 
-    public int getLevel() {
-        return level;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public String getPassword() {
+        return password;
     }
 
-    public int getCoin() {
-        return coin;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setCoin(int coin) {
-        this.coin = coin;
-    }
-
-    public int getExp() {
-        return exp;
-    }
-
-    public void setExp(int exp) {
-        this.exp = exp;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

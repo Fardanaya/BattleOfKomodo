@@ -3,7 +3,7 @@ package src.Controller;
 import src.Node.Data.Age;
 import src.Node.Data.Dragon;
 import src.Node.Data.Element;
-import src.Node.Data.Player;
+import src.Node.Data.Account;
 import src.Node.Data.Skill;
 import src.View.Game;
 
@@ -16,7 +16,7 @@ public class Setup {
                 // SAVED INTO MEMORY
                 setupElement();
                 setupAge();
-                setupSkill();
+                // setupSkill();
 
                 // setupDragon(); // TODO : SEKALI SAJA KLO BELUM ADA DATA
                 // testSetupPlayer(); // TODO : SEKALI SAJA KLO BELUM ADA DATA
@@ -88,10 +88,11 @@ public class Setup {
         public void setupSkill() {
                 Data.skillList.addSkill(new Skill(0, "Fireball", 5, 0));
                 Data.skillList.addSkill(new Skill(1, "Flood", 7, 0));
+                Data.skillList.addSkill(new Skill(2, "Earthquake", 6, 0));
         }
 
         public void testSetupPlayer() {
-                Data.playerList.addPlayer(new Player("admin", "admin"));
+                Data.playerList.addPlayer(new Account("admin", "admin"));
         }
 
         public void Complete() {

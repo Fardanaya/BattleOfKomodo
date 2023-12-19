@@ -6,8 +6,242 @@
       "nickname": "Avux",
       "level": 1,
       "coin": 1000,
+      "food": 500,
       "exp": 0,
-      "dragon": []
+      "dragon": [
+        {
+          "id": "icedragon",
+          "name": "Ice Dragon",
+          "level": 0,
+          "battleHP": 0,
+          "HP": 20,
+          "maxHP": 1000,
+          "feed": 0,
+          "reqFood": 5,
+          "element": {
+            "id": "ice",
+            "name": "Ice",
+            "weak": [
+              "fire"
+            ],
+            "strong": [
+              "nature"
+            ]
+          },
+          "age": {
+            "id": "egg",
+            "stageName": "Egg"
+          },
+          "skills": [
+            {
+              "id": 1,
+              "name": "Flood",
+              "damage": 5,
+              "treshold": 0,
+              "unlock": false
+            }
+          ]
+        },
+        {
+          "id": "volcanodragon",
+          "name": "Flame Dragon",
+          "level": 0,
+          "battleHP": 0,
+          "HP": 20,
+          "maxHP": 1000,
+          "feed": 0,
+          "reqFood": 5,
+          "element": {
+            "id": "flame",
+            "name": "Flame",
+            "weak": [
+              "water"
+            ],
+            "strong": [
+              "nature",
+              "ice"
+            ]
+          },
+          "age": {
+            "id": "egg",
+            "stageName": "Egg"
+          },
+          "skills": [
+            {
+              "id": 0,
+              "name": "Lava Balls",
+              "damage": 5,
+              "treshold": 0,
+              "unlock": false
+            },
+            {
+              "id": 1,
+              "name": "Lava BLAST",
+              "damage": 5,
+              "treshold": 0,
+              "unlock": false
+            },
+            {
+              "id": 2,
+              "name": "Lava ",
+              "damage": 5,
+              "treshold": 5,
+              "unlock": false
+            }
+          ]
+        },
+        {
+          "id": "tropicaldragon",
+          "name": "Tropical Dragon",
+          "level": 0,
+          "battleHP": 0,
+          "HP": 20,
+          "maxHP": 1000,
+          "feed": 0,
+          "reqFood": 5,
+          "element": {
+            "id": "nature",
+            "name": "Nature",
+            "weak": [
+              "fire",
+              "ice"
+            ],
+            "strong": [
+              "water"
+            ]
+          },
+          "age": {
+            "id": "egg",
+            "stageName": "Egg"
+          },
+          "skills": [
+            {
+              "id": 2,
+              "name": "Earthquake",
+              "damage": 6,
+              "treshold": 0,
+              "unlock": false
+            }
+          ]
+        }
+      ],
+      "deck": [
+        {
+          "id": "icedragon",
+          "name": "Ice Dragon",
+          "level": 0,
+          "battleHP": 0,
+          "HP": 20,
+          "maxHP": 1000,
+          "feed": 0,
+          "reqFood": 5,
+          "element": {
+            "id": "ice",
+            "name": "Ice",
+            "weak": [
+              "fire"
+            ],
+            "strong": [
+              "nature"
+            ]
+          },
+          "age": {
+            "id": "egg",
+            "stageName": "Egg"
+          },
+          "skills": [
+            {
+              "id": 1,
+              "name": "Flood",
+              "damage": 5,
+              "treshold": 0,
+              "unlock": false
+            }
+          ]
+        },
+        {
+          "id": "volcanodragon",
+          "name": "Flame Dragon",
+          "level": 0,
+          "battleHP": 0,
+          "HP": 20,
+          "maxHP": 1000,
+          "feed": 0,
+          "reqFood": 5,
+          "element": {
+            "id": "flame",
+            "name": "Flame",
+            "weak": [
+              "water"
+            ],
+            "strong": [
+              "nature",
+              "ice"
+            ]
+          },
+          "age": {
+            "id": "egg",
+            "stageName": "Egg"
+          },
+          "skills": [
+            {
+              "id": 0,
+              "name": "Lava Balls",
+              "damage": 5,
+              "treshold": 0,
+              "unlock": false
+            },
+            {
+              "id": 1,
+              "name": "Lava BLAST",
+              "damage": 5,
+              "treshold": 0,
+              "unlock": false
+            },
+            {
+              "id": 2,
+              "name": "Lava ",
+              "damage": 5,
+              "treshold": 5,
+              "unlock": false
+            }
+          ]
+        },
+        {
+          "id": "tropicaldragon",
+          "name": "Tropical Dragon",
+          "level": 0,
+          "battleHP": 0,
+          "HP": 20,
+          "maxHP": 1000,
+          "feed": 0,
+          "reqFood": 5,
+          "element": {
+            "id": "nature",
+            "name": "Nature",
+            "weak": [
+              "fire",
+              "ice"
+            ],
+            "strong": [
+              "water"
+            ]
+          },
+          "age": {
+            "id": "egg",
+            "stageName": "Egg"
+          },
+          "skills": [
+            {
+              "id": 2,
+              "name": "Earthquake",
+              "damage": 6,
+              "treshold": 0,
+              "unlock": false
+            }
+          ]
+        }
+      ]
     }
   }
 ]

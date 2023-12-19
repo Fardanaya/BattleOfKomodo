@@ -11,8 +11,8 @@ public class Dragon {
     private int battleHP = 0;
     private int HP = 0;
     private int maxHP = 0;
-    private int experience = 0;
-    private int requiredExperience = 100;
+    private int feed = 0;
+    private int reqFood = 100;
     private Element element;
     private Age age;
 
@@ -25,19 +25,21 @@ public class Dragon {
         this.age = age;
     }
 
-    public Dragon(String id, String name, int level, int HP, int maxHP, int experience, Element element, Age age) {
+    public Dragon(String id, String name, int level, int HP, int maxHP, int feed, int reqFood, Element element,
+            Age age) {
         this.id = id;
         this.name = name;
         this.level = level;
-        this.element = element;
         this.HP = HP;
         this.maxHP = maxHP;
-        this.experience = experience;
+        this.feed = feed; //jumlah makanan yang termakan
+        this.reqFood = reqFood; //makanan yang dibutuhkan buat up level
+        this.element = element;
         this.age = age;
     }
 
     // CLONING
-    public Dragon(String id, String name, int level, int HP, int maxHP, int experience, Element element, Age age,
+    public Dragon(String id, String name, int level, int HP, int maxHP, int feed, int reqFood, Element element, Age age,
             ArrayList<Skill> skills) {
         this.id = id;
         this.name = name;
@@ -45,7 +47,8 @@ public class Dragon {
         this.element = element;
         this.HP = HP;
         this.maxHP = maxHP;
-        this.experience = experience;
+        this.feed = feed;
+        this.reqFood = reqFood;
         this.age = age;
         this.skills = skills;
     }
@@ -86,15 +89,20 @@ public class Dragon {
         return maxHP;
     }
 
-    public int getExperience() {
-        return experience;
+    public int getFeed() {
+        return feed;
     }
 
-    public void setReqExperience(int reqExperience) {
-        this.requiredExperience = reqExperience;
+    public void setFeed(int feed) {
+        this.feed = feed;
     }
-    public int getReqExperience() {
-        return requiredExperience;
+
+    public int getReqFood() {
+        return reqFood;
+    }
+
+    public void setReqFood(int reqFood) {
+        this.reqFood = reqFood;
     }
 
     public Age getAgeStage() {
@@ -126,6 +134,15 @@ public class Dragon {
     // }
 
     public Dragon clone() {
-        return new Dragon(this.id, this.name, this.level, this.HP, this.maxHP, this.experience, this.element, this.age, this.skills);
+        return new Dragon(this.id,
+                this.name,
+                this.level,
+                this.HP,
+                this.maxHP,
+                this.feed,
+                this.reqFood,
+                this.element,
+                this.age,
+                this.skills);
     }
 }

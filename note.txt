@@ -9,3 +9,10 @@ TARGET 17/12/23
 - user pilih skill ( not random ) ✅
 - market / store ( brigit ? )
 - ui battle ( simple saja ) ✅
+
+TAGRET 19/12/23
+- Player BATTLE DECK , Dragon Min 1 - Max 3 ( USING ID )
+- ui ??
+- user controller
+- fix some battleController
+- feeding (need to test)

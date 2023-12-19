@@ -1,6 +1,6 @@
 package src.View;
 
-import src.Controller.User;
+import src.Controller.UserController;
 
 public class Menu {
 
@@ -20,19 +20,24 @@ public class Menu {
         return selectedOption;
     }
 
-    public void mainMenu() {
+    public int mainMenu() {
         String title = "Main Menu";
-        String[] Menu = { "Tarung", "Latih", "Zoo", "Market", "Keluar" };
+        String[] Menu = { "Tarung", "Feeding", "Deck", "Zoo", "Market", "Logout" };
 
         int selectedOption = menu.getMenuUserInput(title, Menu);
+        Game.cls();
 
-        System.out.println("Selected option : " + selectedOption);
+        return selectedOption;
     }
 
-    public void latih() {
-        System.out.println("===LATIH===");
-        // Model.dragonList.showDragonList(); // FIXME : METHOD CHANGED
-        // TODO dijadikan selector
+    public int feed() {
+        String title = "Feeding Menu";
+        String[] Menu = { "1X", "Batch", "Kembali" };
+
+        int selectedOption = menu.getMenuUserInput(title, Menu);
+        Game.cls();
+        return selectedOption;
+
     }
 
     public void zoo() {
@@ -45,4 +50,15 @@ public class Menu {
         System.out.println("===MARKET===");
         // TODO call func for print all komodo that available in market
     }
+
+    public int deckMenu() {
+        String title = "Main Menu";
+        String[] Menu = { "Tambah / Ubah", "Hapus", "Reset Deck", "Kembali" };
+
+        int selectedOption = menu.getMenuUserInput(title, Menu);
+        Game.cls();
+
+        return selectedOption;
+    }
+
 }

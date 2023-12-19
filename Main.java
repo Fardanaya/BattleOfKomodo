@@ -15,12 +15,12 @@ public class Main {
         // SUCCESSFULLY LOADED...
 
         // TESTING
-        testing.test();
+        // testing.test();
 
         // PROGRAM
-        // User user = new User();
-        // user.userAuth();
-
+        UserController user = new UserController();
+        user.userAuth();
+        
         // viewData playermenu = new viewData();
         // playermenu.showPlayerDetails(Data.player);;
 

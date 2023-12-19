@@ -42,7 +42,7 @@
         "id": 2,
         "name": "Lava ",
         "damage": 5,
-        "treshold": 0,
+        "treshold": 5,
         "unlock": false
       }
     ]

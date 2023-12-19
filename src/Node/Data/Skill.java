@@ -28,6 +28,10 @@ public class Skill {
         return damage;
     }
 
+    public int getTreshold(){
+        return treshold;
+    }
+
     public boolean isUnlock(int lev){
         if(lev >= treshold){
             return this.unlock = true;

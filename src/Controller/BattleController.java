@@ -139,19 +139,22 @@ public class BattleController {
 
     private Skill chooseSkill(Dragon dragon) {
         List<Skill> skills = dragon.getAllSkills();
-        List<String> availableSkills = new ArrayList<>();
         int choose;
         do {
+            List<String> availableSkills = new ArrayList<>();
             for (Skill skill : skills) {
-                if (skills.indexOf(skill) <2) {
+                if (skills.get(skills.indexOf(skill)).getTreshold() <= dragon.getLevel()) {
                     availableSkills.add(skill.getName());
-                }else if(dragon.getLevel()<10*skills.indexOf(skill)){
+                }else{
                     availableSkills.add(skill.getName()+" [locked]");
                 }
             }
         
         choose = (game.selectSkill(availableSkills));
-        } while (choose < 1 || choose > skills.size());
+        if (choose >= 1 && choose <= skills.size() && skills.get(choose - 1).getTreshold() > dragon.getLevel()) {
+            System.out.println("Skill terkunci. Pilih skill lain.");
+        }
+        } while (choose < 1 || choose > skills.size() || (skills.get(choose - 1).getTreshold() > dragon.getLevel()));
         return skills.get(choose-1);
     }
 

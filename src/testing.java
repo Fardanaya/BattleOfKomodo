@@ -10,33 +10,50 @@ public class testing {
     public static void test() {
 
         // DRAGON
+
         // viewData dragmenu = new viewData();
         // dragmenu.showAllDragon(Data.dragonList.getAllDragons());
         // Insert Skill to dragon
-        // Data.dragonList.getDragon(0).addSkill(Data.skillList.getSkill(0));
+        // Data.dragonList.getDragon(2).addSkill(Data.skillList.getSkill(2));
 
 
 
         // PLAYER DONE
-        // playerView playermenu = new playerView();
+
+        // Add Account
+        // Account account = new Account("admin", "admin");
+        // Data.playerList.addPlayer(account);
+
+        // viewData playermenu = new viewData();
         // playermenu.showAllPlayerDetails(Data.playerList.getAllPlayers());
         // Insert Dragon to player
-        // Data.playerList.getPlayer(0).addDragonToPlayer(Data.dragonList.getAllDragons().get(1));
+        // Data.playerList.getPlayer(0).getPlayer().addDragonToPlayer(Data.dragonList.getAllDragons().get(1));
         
         
 
         // BATTLE
         Data.setPlayer(Data.playerList.getPlayer(0));
+        Player avux = new Player();
+        avux.setNickname("Avux");
+        Data.playerList.getPlayer(0).setPlayer(avux);
+        
         ArrayList<Dragon> player = new ArrayList<>();
         player.add(Data.dragonList.getDragon(0));
+        player.add(Data.dragonList.getDragon(2));
         player.add(Data.dragonList.getDragon(1));
 
         ArrayList<Dragon> bot = new ArrayList<>();
         bot.add(Data.dragonList.getDragon(1));
-        bot.add(Data.dragonList.getDragon(0));
+        // bot.add(Data.dragonList.getDragon(0));
+        // bot.add(Data.dragonList.getDragon(2));
 
-        Battle battle = new Battle(player, bot);
+        BattleController battle = new BattleController(player, bot);
         battle.startBattle();
+
+        // DUMMY BATTLE
+        // Battle battle = new Battle(player, bot);
+        // battle.startBattle();
+
 
 
 

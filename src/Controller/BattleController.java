@@ -7,16 +7,20 @@ import src.View.Game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import java.lang.Thread;
 
-public class Battle {
-    private List<Dragon> player;
-    private List<Dragon> bot;
+public class BattleController {
+    private Battle player;
+    private Battle bot;
+
     private boolean playerTurn;
 
-    public Battle(List<Dragon> player, List<Dragon> bot) {
-        this.player = prepareDragons(player);
-        this.bot = prepareDragons(bot);
+    Game game = new Game();
+
+    public BattleController(List<Dragon> player, List<Dragon> bot) {
+        this.player = new Battle(Data.player.getPlayer().getNickname(), prepareDragons(player));
+        this.bot = new Battle("BOT", prepareDragons(bot));
         this.playerTurn = new Random().nextBoolean();
     }
 
@@ -44,12 +48,15 @@ public class Battle {
         return aliveIndices;
     }
 
-    public void startBattle() { // FIXME: BUG DRAGON THAT TAKING DAMAGE
-            // TODO: add validation for draw match, if player and bot only have dragon with same element id. 
+    public void startBattle() {
+        // TODO: add validation for draw match, if player and bot only have dragon with
+        // same element id.
         System.out.println(playerTurn ? "Player's Turn" : "Bot's Turn");
+        // game.turn(playerTurn);
+        while (isAlive(player.getDragons()) && isAlive(bot.getDragons())) {
 
-        while (isAlive(player) && isAlive(bot)) {
             if (!playerTurn) {
+                Game.cls();
                 System.out.println("Enemy Attacking ...");
                 try {
                     Thread.sleep((new Random().nextInt(3)) * 1000);
@@ -58,10 +65,13 @@ public class Battle {
                 }
             }
 
-            Dragon attacker = selectDragon(playerTurn ? "player" : "bot", playerTurn ? player : bot);
-            Dragon defender = selectDragon(playerTurn ? "bot" : "player", playerTurn ? bot : player);
-
+            Dragon attacker = selectDragon(playerTurn ? "player" : "bot",
+                    playerTurn ? player.getDragons() : bot.getDragons());
+            Dragon defender = selectDragon(playerTurn ? "bot" : "player",
+                    playerTurn ? bot.getDragons() : player.getDragons());
+                    
             attack(attacker, defender);
+            game.HUD(player, bot);
             switchTurn();
         }
 
@@ -93,16 +103,39 @@ public class Battle {
     }
 
     private void attack(Dragon attacker, Dragon defender) {
-        Skill dragonSkill = chooseSkill(attacker);
-        int damage = calculateDamage(attacker.getElement(), defender.getElement(), dragonSkill.getDamage());
-        takeDamage(defender, damage);
+        Skill dragonSkill = playerTurn ? chooseSkill(attacker) : chooserandomSkill(attacker);
 
-        displayBattleInfo(attacker, dragonSkill, defender, damage);
+        int damage = calculateDamage(attacker.getElement(), defender.getElement(), dragonSkill.getDamage());
+
+        if (playerTurn) {
+            player.setDamageDealed(player.getDamageDealed() + damage);
+            bot.setDamageTaken(bot.getDamageTaken() + damage);
+        } else {
+            bot.setDamageDealed(bot.getDamageDealed() + damage);
+            player.setDamageTaken(player.getDamageTaken() + damage);
+        }
+
+        takeDamage(defender, damage);
+        game.displayBattleInfo(attacker, dragonSkill, defender, damage);
+    }
+
+    private Skill chooserandomSkill(Dragon dragon) {
+        List<Skill> skills = dragon.getAllSkills();
+        return skills.get(new Random().nextInt(skills.size()));
     }
 
     private Skill chooseSkill(Dragon dragon) {
         List<Skill> skills = dragon.getAllSkills();
-        return skills.get(new Random().nextInt(skills.size()));
+        Scanner input = new Scanner(System.in);
+        int choose;
+        do {
+            Game.displayDragonSkills(dragon);
+            choose = input.nextInt();
+            if (choose > 2 && (choose * 10) <= dragon.getLevel()) {
+                System.out.println("Skill locked");
+            }
+        } while (choose < 1 || choose > skills.size());
+        return skills.get(choose - 1);
     }
 
     private int calculateDamage(Element attackerElement, Element defenderElement, int damage) {
@@ -113,24 +146,16 @@ public class Battle {
 
     private void switchTurn() {
         playerTurn = !playerTurn;
-        System.out.println(playerTurn ? "Player's Turn" : "Bot's Turn");
-    }
-
-    private void displayBattleInfo(Dragon attacker, Skill skill, Dragon defender, int damage) {
-        System.out.println(attacker.getName() + " uses " + skill.getName() +
-                " against " + defender.getName() + " and deals " + damage + " damage!");
-        System.out.println(defender.getName() + " has " + defender.getBattleHP() + " HP remaining.\n");
-
-        new Game().HUD(player, bot);
+        game.turn(playerTurn);
     }
 
     private void displayBattleResult() {
-        if (!isAlive(player)) {
-            System.out.println("Game Over! " + Data.player.getAccount().getNickname() + " has been defeated.");
-        } else if (!isAlive(bot)) {
-            System.out.println("Congratulations! You have defeated the bot.");
-        } else {
-            System.out.println("The battle ended in a draw.");
+        String result = "draw";
+        if (isAlive(player.getDragons()) && !isAlive(bot.getDragons())) {
+            result = "win";
+        } else if (!isAlive(player.getDragons()) && isAlive(bot.getDragons())) {
+            result = "lose";
         }
+        game.displayBattleResult(result, player.getNickname(), bot.getNickname());
     }
 }

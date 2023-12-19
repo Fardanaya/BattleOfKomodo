@@ -2,3 +2,10 @@
 - unlock Skill at level ?
 - setup skill & base power
 - display selected enemy & health ( bar / number / percentage )
+
+
+TARGET 17/12/23
+- currency system ( coin management ) ✅
+- user pilih skill ( not random ) ✅
+- market / store ( brigit ? )
+- ui battle ( simple saja ) ✅

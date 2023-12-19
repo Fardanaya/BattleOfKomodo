@@ -1,14 +1,23 @@
 [
   {
     "id": 0,
-    "name": "Lava Balls",
+    "name": "Fireball",
     "damage": 5,
-    "treshold": 0
+    "treshold": 0,
+    "unlock": false
   },
   {
     "id": 1,
     "name": "Flood",
     "damage": 7,
-    "treshold": 0
+    "treshold": 0,
+    "unlock": false
+  },
+  {
+    "id": 2,
+    "name": "Earthquake",
+    "damage": 6,
+    "treshold": 0,
+    "unlock": false
   }
 ]

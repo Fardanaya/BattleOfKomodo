@@ -1,6 +1,6 @@
 package src.Controller;
 
-import src.Node.Data.Player;
+import src.Node.Data.Account;
 import src.View.*;
 
 public class Auth {
@@ -39,7 +39,7 @@ public class Auth {
                 System.out.println("Password : " + ("*").repeat(password.length()));
                 continue;
             }
-            Data.playerList.addPlayer(new Player(username, password));
+            Data.playerList.addPlayer(new Account(username, password));
             System.out.println("Registrasi Berhasil");
         } while (!password.equals(verifpass));
     }
@@ -62,7 +62,7 @@ public class Auth {
         return hasLetter && hasDigit;
     }
 
-    public Player login() {
+    public Account login() {
         boolean log = false;
         int userid;
         System.out.println("LOGIN");

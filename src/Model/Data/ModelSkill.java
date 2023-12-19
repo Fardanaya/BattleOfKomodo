@@ -1,20 +1,23 @@
 package src.Model.Data;
 
 import java.util.ArrayList;
-import src.Model.JSON.ModelSkillJSON;
+
+import com.google.gson.reflect.TypeToken;
+
+import src.Model.JSON.*;
 import src.Node.Data.Skill;
 
 public class ModelSkill {
     public ArrayList<Skill> SkillList;
-    ModelSkillJSON dataJSON;
+    ModelJSON<Skill> dataJSON;
 
     public ModelSkill() {
-        this.dataJSON = new ModelSkillJSON();
+        this.dataJSON = new ModelJSON<>("Database/Game/Skill.json");
         fetchJsonData();
     }
 
     public void fetchJsonData() {
-        this.SkillList = dataJSON.readDataJSON();
+        this.SkillList = dataJSON.readFromFile(new TypeToken<ArrayList<Skill>>() {}.getType());
     }
 
     public void addSkill(Skill skill) {
@@ -44,7 +47,7 @@ public class ModelSkill {
 
     public boolean saveData() {
         try {
-            dataJSON.writeDataJSON(SkillList);
+            dataJSON.writeToFile(SkillList);
             return true;
         } catch (Exception e) {
             return false;

@@ -1,21 +1,25 @@
 package src.Model.Data;
 
 import java.util.ArrayList;
-import src.Model.JSON.ModelDragonJSON;
+
+import com.google.gson.reflect.TypeToken;
+
+import src.Model.JSON.ModelJSON;
 import src.Node.Data.Dragon;
 
 public class ModelDragon {
     public ArrayList<Dragon> DragonList;
 
-    ModelDragonJSON dataJSON;
+    ModelJSON<Dragon> dataJSON;
 
     public ModelDragon() {
-        this.dataJSON = new ModelDragonJSON();
+        this.dataJSON = new ModelJSON<>("Database/Game/Dragon.json");
         fetchJsonData();
     }
 
     public void fetchJsonData() {
-        this.DragonList = dataJSON.readDataJSON();
+        this.DragonList = dataJSON.readFromFile(new TypeToken<ArrayList<Dragon>>() {
+        }.getType());
     }
 
     public void addDragon(Dragon dragon) {
@@ -45,7 +49,7 @@ public class ModelDragon {
 
     public boolean saveData() {
         try {
-            dataJSON.writeDataJSON(DragonList);
+            dataJSON.writeToFile(DragonList);
             return true;
         } catch (Exception e) {
             return false;

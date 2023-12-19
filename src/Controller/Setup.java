@@ -92,7 +92,7 @@ public class Setup {
         }
 
         public void testSetupPlayer() {
-                Data.playerList.addPlayer(new Account("admin", "admin"));
+                Data.playerList.addAccount(new Account("admin", "admin"));
         }
 
         public void Complete() {

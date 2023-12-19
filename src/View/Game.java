@@ -12,6 +12,10 @@ public class Game {
         System.out.println("[ Game ] " + message);
     }
 
+    public void print(String message) {
+        System.out.println(message);
+    }
+
     public static void cls() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
@@ -43,7 +47,8 @@ public class Game {
 
         sb.append("+-----------------------------------+            +-----------------------------------+\n");
         String usernameFormat = "| %-33s |            | %-33s |%n";
-        sb.append(String.format(usernameFormat, centerText(Data.player.getPlayer().getNickname(), 33), centerText("BOT", 33)));
+        sb.append(String.format(usernameFormat, centerText(Data.player.getPlayer().getNickname(), 33),
+                centerText("BOT", 33)));
         sb.append("+----------------------+------------+            +------------+----------------------+\n");
 
         String dragonFormat = "| %-20s | %-10s |            | %10s | %-20s |%n";
@@ -73,11 +78,12 @@ public class Game {
     }
 
     public void displayBattleInfo(Dragon attacker, Skill skill, Dragon defender, int damage) {
-        System.out.println(attacker.getName() + " uses " + skill.getName() + " against " + defender.getName() + " and deals " + damage + " damage!");
+        System.out.println(attacker.getName() + " uses " + skill.getName() + " against " + defender.getName()
+                + " and deals " + damage + " damage!");
         System.out.println(defender.getName() + " has " + defender.getBattleHP() + " HP remaining.\n");
     }
 
-    public void displayBattleResult(String status, String playerName, String botName) {
+    public void displayBattleResult(String status, String playerName, String botName, String time) {
         if (status.equals("win")) {
             System.out.println("Congratulations! You have defeated " + botName + ".");
         } else if (status.equals("lose")) {
@@ -85,6 +91,7 @@ public class Game {
         } else {
             System.out.println("The battle ended in a draw.");
         }
+        System.out.println("Total time elapsed : " + time);
     }
 
     public void turn(boolean playerTurn) {

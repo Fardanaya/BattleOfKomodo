@@ -6,8 +6,8 @@
     "battleHP": 0,
     "HP": 20,
     "maxHP": 1000,
-    "experience": 0,
-    "requiredExperience": 0,
+    "feed": 0,
+    "reqFood": 5,
     "element": {
       "id": "flame",
       "name": "Flame",
@@ -54,8 +54,8 @@
     "battleHP": 0,
     "HP": 20,
     "maxHP": 1000,
-    "experience": 0,
-    "requiredExperience": 0,
+    "feed": 0,
+    "reqFood": 5,
     "element": {
       "id": "ice",
       "name": "Ice",
@@ -87,8 +87,8 @@
     "battleHP": 0,
     "HP": 20,
     "maxHP": 1000,
-    "experience": 0,
-    "requiredExperience": 0,
+    "feed": 0,
+    "reqFood": 5,
     "element": {
       "id": "nature",
       "name": "Nature",

@@ -30,7 +30,8 @@ public class viewData {
         System.out.println("Dragon Level : " + dragon.getLevel());
         System.out.println("Dragon Current HP : " + dragon.getBattleHP());
         System.out.println("Dragon Max HP : " + dragon.getMaxHP());
-        System.out.println("Dragon Experience : " + dragon.getExperience());
+        // System.out.println("Dragon Experience : " + dragon.getExperience()); // FIXME
+        // : fix
         System.out.println("Dragon Element : ");
         System.out.println("   Element : " + dragon.getElement().getName());
         System.out.println("   Weakness : " + dragon.getElement().getWeak());
@@ -42,12 +43,6 @@ public class viewData {
         System.out.println("   Skill Base Power : " + dragon.getSkill());
     }
 
-    public void showDragon(Dragon dragon) {
-        System.out.println("Dragon ID : " + dragon.getId());
-        System.out.println("Dragon Name : " + dragon.getName());
-        System.out.println("Dragon Element : " + dragon.getElement().getName());
-    }
-
     public void showAllDragonDetails(ArrayList<Dragon> dragonList) {
         for (Dragon dragon : dragonList) {
             System.out.println("========================");
@@ -57,11 +52,19 @@ public class viewData {
     }
 
     public void showAllDragon(ArrayList<Dragon> dragonList) {
-        for (Dragon dragon : dragonList) {
-            System.out.println("========================");
-            showDragon(dragon);
+        if (dragonList.size() == 0) {
+            System.out.println("No Dragon Found");
+            return;
         }
-        System.out.println("========================");
+
+        String format = "| %-2s | %-20s | %-9s |%n";
+        System.out.println("+----+----------------------+-----------+");
+        System.out.format(format, "ID", "Dragon Name", "Element");
+        System.out.println("+----+----------------------+-----------+");
+        for (Dragon dragon : dragonList) {
+            System.out.format(format,dragonList.indexOf(dragon), dragon.getName(), dragon.getElement().getName());
+        }
+        System.out.println("+----+----------------------+-----------+");
     }
 
     // Element

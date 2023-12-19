@@ -1,22 +1,25 @@
-package src.Controller;
+package src.Controller.Modul;
 
+import src.Controller.Data;
 import src.Node.Data.Account;
 import src.View.*;
 
 public class Auth {
     Input prompt = new Input();
 
+    // TODO: ROMBAK INPUT & OUTPUT
+
     public void register() {
         String username, password, verifpass;
         System.out.println("REGISTRASI");
         do {
             username = prompt.getUserInput("Username : ");
-            if (Data.playerList.searchPlayer(username) != -1) {
+            if (Data.playerList.searchAccount(username) != -1) {
                 Game.cls();
                 System.out.println("Username sudah terdaftar. Silakan coba lagi.");
                 continue;
             }
-        } while (Data.playerList.searchPlayer(username) != -1);
+        } while (Data.playerList.searchAccount(username) != -1);
 
         do {
             password = prompt.getPasswordInput("password: ");
@@ -39,7 +42,7 @@ public class Auth {
                 System.out.println("Password : " + ("*").repeat(password.length()));
                 continue;
             }
-            Data.playerList.addPlayer(new Account(username, password));
+            Data.playerList.addAccount(new Account(username, password));
             System.out.println("Registrasi Berhasil");
         } while (!password.equals(verifpass));
     }
@@ -69,19 +72,19 @@ public class Auth {
         do {
             String username = prompt.getUserInput("username : ");
             String password = prompt.getPasswordInput("password : ");
-            userid = Data.playerList.searchPlayer(username);
+            userid = Data.playerList.searchAccount(username);
             if (userid == -1) {
                 System.out.println("data user tidak ditemukan");
                 continue;
             }
-            if (!password.equals(Data.playerList.getPlayer(userid).getPassword())) {
+            if (!password.equals(Data.playerList.getAccount(userid).getPassword())) {
                 System.out.println("password salah");
                 continue;
             }
             log = true;
         } while (!log);
         System.out.println("Login Berhasil");
-        return Data.playerList.getPlayer(userid);
+        return Data.playerList.getAccount(userid);
     }
 
 }

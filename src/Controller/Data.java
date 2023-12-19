@@ -14,7 +14,7 @@ public class Data {
     public static ModelAge age = new ModelAge();
 
     // REQUIRED DATA
-    public static ModelPlayer playerList = new ModelPlayer();
+    public static ModelAccount playerList = new ModelAccount();
     public static ModelSkill skillList = new ModelSkill();
     public static ModelDragon dragonList = new ModelDragon();
 

@@ -124,18 +124,35 @@ public class BattleController {
         return skills.get(new Random().nextInt(skills.size()));
     }
 
+    // private Skill chooseSkill(Dragon dragon) {
+    //     List<Skill> skills = dragon.getAllSkills();
+    //     int choose;
+    //     do {
+    //         Game.displayDragonSkills(dragon);
+    //         choose = Data.input.getUserInput("Choose Skill: ").trim().charAt(0) - '0';
+    //         if (choose > 2 && (choose * 10) <= dragon.getLevel()) {
+    //             System.out.println("Skill locked");
+    //         }
+    //     } while (choose < 1 || choose > skills.size());
+    //     return skills.get(choose - 1);
+    // }
+
     private Skill chooseSkill(Dragon dragon) {
         List<Skill> skills = dragon.getAllSkills();
-        Scanner input = new Scanner(System.in);
+        List<String> availableSkills = new ArrayList<>();
         int choose;
         do {
-            Game.displayDragonSkills(dragon);
-            choose = input.nextInt();
-            if (choose > 2 && (choose * 10) <= dragon.getLevel()) {
-                System.out.println("Skill locked");
+            for (Skill skill : skills) {
+                if (skills.indexOf(skill) <2) {
+                    availableSkills.add(skill.getName());
+                }else if(dragon.getLevel()<10*skills.indexOf(skill)){
+                    availableSkills.add(skill.getName()+" [locked]");
+                }
             }
+        
+        choose = (game.selectSkill(availableSkills));
         } while (choose < 1 || choose > skills.size());
-        return skills.get(choose - 1);
+        return skills.get(choose-1);
     }
 
     private int calculateDamage(Element attackerElement, Element defenderElement, int damage) {

@@ -10,3 +10,5 @@ Earth
 
 Nature
 - Nature Dragon | https://dragoncity.fandom.com/wiki/Nature_Dragon
+
+damage tiap up = +2

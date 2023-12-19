@@ -12,6 +12,7 @@ public class Dragon {
     private int HP = 0;
     private int maxHP = 0;
     private int experience = 0;
+    private int requiredExperience = 100;
     private Element element;
     private Age age;
 
@@ -57,6 +58,10 @@ public class Dragon {
         return name;
     }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public int getLevel() {
         return level;
     }
@@ -83,6 +88,13 @@ public class Dragon {
 
     public int getExperience() {
         return experience;
+    }
+
+    public void setReqExperience(int reqExperience) {
+        this.requiredExperience = reqExperience;
+    }
+    public int getReqExperience() {
+        return requiredExperience;
     }
 
     public Age getAgeStage() {

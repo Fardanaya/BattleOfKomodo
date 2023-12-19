@@ -7,6 +7,7 @@
     "HP": 20,
     "maxHP": 1000,
     "experience": 0,
+    "requiredExperience": 0,
     "element": {
       "id": "flame",
       "name": "Flame",
@@ -29,6 +30,20 @@
         "damage": 5,
         "treshold": 0,
         "unlock": false
+      },
+      {
+        "id": 1,
+        "name": "Lava BLAST",
+        "damage": 5,
+        "treshold": 0,
+        "unlock": false
+      },
+      {
+        "id": 2,
+        "name": "Lava ",
+        "damage": 5,
+        "treshold": 0,
+        "unlock": false
       }
     ]
   },
@@ -40,6 +55,7 @@
     "HP": 20,
     "maxHP": 1000,
     "experience": 0,
+    "requiredExperience": 0,
     "element": {
       "id": "ice",
       "name": "Ice",
@@ -72,6 +88,7 @@
     "HP": 20,
     "maxHP": 1000,
     "experience": 0,
+    "requiredExperience": 0,
     "element": {
       "id": "nature",
       "name": "Nature",

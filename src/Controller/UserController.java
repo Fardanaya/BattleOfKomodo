@@ -1,19 +1,16 @@
 package src.Controller;
 
+import java.util.ArrayList;
+
 import src.Controller.Modul.Auth;
 import src.Node.Data.*;
-import src.View.*;
 
 public class UserController {
-
-    Menu menu = new Menu();
-    Game game = new Game();
-    viewData view = new viewData();
 
     public void userAuth() {
         Auth auth = new Auth();
         while (Data.getPlayer() == null) {
-            int selectedOption = menu.userAuth();
+            int selectedOption = Data.menu.userAuth();
             switch (selectedOption) {
                 case 1:
                     auth.register();
@@ -21,9 +18,9 @@ public class UserController {
                 case 2:
                     Account user = auth.login();
                     if (user.getPlayer().getNickname() == null) {
-                        String nickname = Data.input.getUserInput("Buat Nickname Anda : ");
+                        String nickname = Data.prompt.getUserInput("Buat Nickname Anda : ");
                         while (nickname.isEmpty()) {
-                            nickname = Data.input.getUserInput("Buat Nickname Anda : ");
+                            nickname = Data.prompt.getUserInput("Buat Nickname Anda : ");
                         }
                         user.getPlayer().setNickname(nickname);
                     }
@@ -32,8 +29,7 @@ public class UserController {
                     Data.setPlayer(null);
                     break;
                 case 3:
-                    System.exit(0);
-                    break;
+                    return;
                 default:
                     break;
             }
@@ -43,7 +39,7 @@ public class UserController {
     public void userMenu() {
         int selectedOption;
         do {
-            selectedOption = menu.mainMenu();
+            selectedOption = Data.menu.mainMenu();
             switch (selectedOption) {
                 case 1:
                     // battle
@@ -56,7 +52,7 @@ public class UserController {
                     userDeck();
                     break;
                 case 4:
-                    view.showAllDragon(Data.player.getPlayer().getAllDragon()); // DONE
+                    Data.view.showAllDragon(Data.player.getPlayer().getAllDragon()); // DONE
                     break;
                 case 5:
                     // market / shop
@@ -73,28 +69,27 @@ public class UserController {
     public void userDeck() {
         int selectedOption;
         do {
-            view.showAllDragon(Data.player.getPlayer().getDeck());
-            selectedOption = menu.deckMenu();
-            // viewData view = new viewData();
+            Data.view.showAllDragon((ArrayList<Dragon>) Data.player.getPlayer().battleDragons());
+            selectedOption = Data.menu.deckMenu();
             switch (selectedOption) {
                 case 1:
-                    // add klo naga < 3 / change klo naga == 3
-                    if (Data.player.getPlayer().getAllDragon().size() < 3) {
-                        game.print("Add Dragon");
-
-                        // add
+                    if (Data.player.getPlayer().getDeck().size() < 3) {
+                        Data.game.print("Add Dragon");
+                        int id = Integer.parseInt(Data.prompt.getUserInput("ID Naga : "));
+                        if (Data.player.getPlayer().getDeck().contains(id - 1)) {
+                            Data.game.print("Naga sudah ada di deck");
+                        } else {
+                            Data.player.getPlayer().addDragonToDeck(id - 1);
+                        }
                     } else {
-                        // change ( id to id )
+                        Data.game.print("Change Dragon"); // TODO Swap ID Dragon on Battledeck
                     }
                     break;
                 case 2:
-                    Data.player.getPlayer()
-                            .removeDragonFromDeck(Integer.parseInt(Data.input.getUserInput("Remove Dragon ID :")) - 1); // DONE
+                    Data.player.getPlayer().removeDragonFromDeck(Integer.parseInt(Data.prompt.getUserInput("Remove Dragon ID :")) - 1); // DONE
                     break;
                 case 3:
-                    // reset deck ( clear )
-                    Data.playerList.getAccount(Data.playerList.searchAccount(Data.player.getUsername())).getPlayer()
-                            .clearDeck(); // DONE
+                    Data.player.getPlayer().clearDeck(); // DONE
                     break;
                 case 4:
                     // exit
@@ -107,18 +102,17 @@ public class UserController {
 
     public void feeding() {
         do {
-            view.showAllDragon(Data.player.getPlayer().getAllDragon());
-            int pilih = Integer.parseInt(Data.input.getUserInput("Pilih Dragon: "));
-            Dragon dragon = Data.playerList.getAccount(Data.playerList.searchAccount(Data.player.getUsername()))
-                    .getPlayer().getDragon(pilih - 1);
+            Data.view.showAllDragon(Data.player.getPlayer().getAllDragon());
+            int pilih = Integer.parseInt(Data.prompt.getUserInput("Pilih Dragon: "));
+            Dragon dragon = Data.player.getPlayer().getDragon(pilih - 1);
             while (true) {
-                int selectedOption = menu.feed();
+                int selectedOption = Data.menu.feed();
                 switch (selectedOption) {
                     case 1:
                         DragonController.feeding(dragon);
                         break;
                     case 2:
-                        int repeat = Integer.parseInt(Data.input.getUserInput("Berapa Kali : "));
+                        int repeat = Integer.parseInt(Data.prompt.getUserInput("Berapa Kali : "));
                         for (int i = 0; i < repeat; i++) {
                             DragonController.feeding(dragon);
                         }

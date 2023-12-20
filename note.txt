@@ -1,8 +1,6 @@
-- age di controller nanti kalo tambah xp habis battle ata habis train ada triger pengecekan
-- unlock Skill at level ?
-- setup skill & base power
-- display selected enemy & health ( bar / number / percentage )
-
+- unlock Skill at level ? ✅
+- setup skill & base power 
+- display selected dragon & health ( bar / number / percentage ) ✅
 
 TARGET 17/12/23
 - currency system ( coin management ) ✅
@@ -11,8 +9,8 @@ TARGET 17/12/23
 - ui battle ( simple saja ) ✅
 
 TAGRET 19/12/23
-- Player BATTLE DECK , Dragon Min 1 - Max 3 ( USING ID )
+- Player BATTLE DECK , Dragon Min 1 - Max 3 ( USING ID ) ✅
 - ui ??
-- user controller
-- fix some battleController
-- feeding (need to test)
+- user controller - ON PROGRESS
+- fix some battleController - ✅
+- feeding & Leveling - ✅

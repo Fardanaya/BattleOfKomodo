@@ -1,7 +1,6 @@
 package src.View;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import src.Controller.Data;
@@ -103,6 +102,6 @@ public class Game {
     }
 
     public int selectSkill(List<String> availableSkills) {
-        return Data.input.getMenuUserInput("Choose Skill", availableSkills.toArray(new String[0]));
+        return Data.prompt.getMenuUserInput("Choose Skill", availableSkills.toArray(new String[0]));
     }
 }

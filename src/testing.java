@@ -36,21 +36,12 @@ public class testing {
 
 
         // BATTLE
-
-        ArrayList<Dragon> playerDragon = new ArrayList<>();
-        playerDragon.add(Data.dragonList.getDragon(0));
-        playerDragon.add(Data.dragonList.getDragon(2));
-        playerDragon.add(Data.dragonList.getDragon(1));
-
         ArrayList<Dragon> botDragon = new ArrayList<>();
         botDragon.add(Data.dragonList.getDragon(1));
-        // botDragon.add(Data.dragonList.getDragon(0));
+        botDragon.add(Data.dragonList.getDragon(0));
         // botDragon.add(Data.dragonList.getDragon(2));
-
-        Player p = new Player();
-        p.setDeck(playerDragon);
         
-        BattleController battle = new BattleController(p.battleDragons(), new Bot(botDragon).battleDragons());
+        BattleController battle = new BattleController(Data.player.getPlayer().battleDragons(), new Bot(botDragon).battleDragons());
         battle.startBattle();
 
         // DUMMY BATTLE

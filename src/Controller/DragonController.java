@@ -18,18 +18,22 @@ public class DragonController {
         } else {
             dragon.setReqFood((int) ((dragon.getReqFood() + (0.25 * dragon.getReqFood())) / 2) * 2);
         }
-        System.out.println("Dragon " + dragon.getName() + " level up to " + dragon.getLevel());
+        Data.game.print("Dragon " + dragon.getName() + " level up to " + dragon.getLevel());
     }
 
     public static void feeding(Dragon dragon) {
         int feed = dragon.getFeed();
-        dragon.setFeed(feed + 1);
-        // TODO : CONNECT USER FOOD
-        if (dragon.getFeed() >= 5) {
-            dragon.setFeed(0);
-            levelUp(dragon);
+        if (Data.player.getPlayer().getFood() >= dragon.getReqFood()) {
+            dragon.setFeed(feed + 1);
+            Data.player.getPlayer().setFood(Data.player.getPlayer().getFood() - dragon.getReqFood());
+            if (dragon.getFeed() >= 5) {
+                dragon.setFeed(0);
+                levelUp(dragon);
+            }
+            Data.view.feedDragon(dragon);
+        } else {
+            Data.game.print("Food not enough");
         }
-        System.out.println("Dragon " + dragon.getName() + dragon.getFeed() + "/" + 5); // TODO : MOVE VIEW
     }
 
 }

@@ -4,12 +4,11 @@ import src.Model.Data.*;
 
 import src.Node.Data.Account;
 
-import src.View.Input;
-import src.View.Game;
+import src.View.*;
 
 public class Data {
     // REQUIRED BY GAME
-    public static Input input = new Input();
+    public static Input prompt = new Input();
     public static ModelElement element = new ModelElement();
     public static ModelAge age = new ModelAge();
 
@@ -21,20 +20,23 @@ public class Data {
     // REQUIRED USER
     public static Account player;
 
-    Game gameMessage = new Game();
+    // REQUIRED UI
+    public static Game game = new Game();
+    public static Menu menu = new Menu();
+    public static viewData view = new viewData();
 
     public Data() {
-        gameMessage.alert("Loading Data...");
+        Data.game.alert("Loading Data...");
     }
 
     public void Complete() {
-        gameMessage.alert("Successfully Load Data !");
+        Data.game.alert("Successfully Load Data !");
     }
 
     public static Account getPlayer() {
         return player;
     }
-    
+
     public static void setPlayer(Account player) {
         Data.player = player;
     }

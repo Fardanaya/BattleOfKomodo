@@ -11,7 +11,7 @@ public class Player {
     private int exp = 0;
 
     private ArrayList<Dragon> dragon;
-    private ArrayList<Dragon> deck;
+    private ArrayList<Integer> deck;
 
     public Player() {
         this.dragon = new ArrayList<>();
@@ -87,15 +87,15 @@ public class Player {
         this.dragon.remove(Dragon);
     }
 
-    public ArrayList<Dragon> getDeck() {
+    public ArrayList<Integer> getDeck() {
         return deck;
     }
 
-    public void setDeck(ArrayList<Dragon> deck) {
+    public void setDeck(ArrayList<Integer> deck) {
         this.deck = deck;
     }
 
-    public void addDragonToDeck(Dragon Dragon) {
+    public void addDragonToDeck(int Dragon) {
         this.deck.add(Dragon);
     }
 
@@ -108,14 +108,18 @@ public class Player {
     }
 
     public List<Dragon> battleDragons() {
-        List<Dragon> BattleDeck = new ArrayList<>();
-
-        for (Dragon dragon : this.deck) {
-            Dragon clonedDragon = dragon.clone();
-            clonedDragon.setBattleHP(clonedDragon.getHP());
-            BattleDeck.add(clonedDragon);
+        List<Dragon> battleDeck = new ArrayList<>();
+    
+        for (Integer index : this.deck) {
+            if (index >= 0 && index < this.dragon.size()) {
+                Dragon dragon = this.dragon.get(index);
+                Dragon clonedDragon = dragon.clone();
+                clonedDragon.setBattleHP(clonedDragon.getHP());
+                battleDeck.add(clonedDragon);
+            }
         }
-
-        return BattleDeck;
+    
+        return battleDeck;
     }
+    
 }

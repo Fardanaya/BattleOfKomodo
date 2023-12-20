@@ -32,7 +32,7 @@ public class Menu {
 
     public int feed() {
         String title = "Feeding Menu";
-        String[] Menu = { "1X", "Batch", "Kembali" };
+        String[] Menu = { "1x", "Multiple", "Kembali" };
 
         int selectedOption = menu.getMenuUserInput(title, Menu);
         Game.cls();
@@ -42,8 +42,7 @@ public class Menu {
 
     public void zoo() {
         System.out.println("===ZOO===");
-        // Model.dragonList.showDragonList(); // FIXME : METHOD CHANGED
-        // TODO dijadikan selector
+        // FIXME : METHOD CHANGED
     }
 
     public void market() {

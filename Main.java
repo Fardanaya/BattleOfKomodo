@@ -25,8 +25,8 @@ public class Main {
         // playermenu.showPlayerDetails(Data.player);;
 
         // SAVING DATA TO JSON FILE
-        Data.skillList.saveData();
-        Data.dragonList.saveData();
+        // Data.skillList.saveData();
+        // Data.dragonList.saveData();
         Data.playerList.saveData();
     }
 }

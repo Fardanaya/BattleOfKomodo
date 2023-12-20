@@ -57,14 +57,24 @@ public class viewData {
             return;
         }
 
-        String format = "| %-2s | %-20s | %-9s |%n";
-        System.out.println("+----+----------------------+-----------+");
-        System.out.format(format, "ID", "Dragon Name", "Element");
-        System.out.println("+----+----------------------+-----------+");
+        String format = "| %-2s | %-20s | %-9s | %-5s |%n";
+        System.out.println("+----+----------------------+-----------+-------+");
+        System.out.format(format, "ID", "Dragon Name", "Element", "level");
+        System.out.println("+----+----------------------+-----------+-------+");
         for (Dragon dragon : dragonList) {
-            System.out.format(format,dragonList.indexOf(dragon), dragon.getName(), dragon.getElement().getName());
+            System.out.format(format, dragonList.indexOf(dragon) + 1, dragon.getName(), dragon.getElement().getName(),
+                    dragon.getLevel());
         }
-        System.out.println("+----+----------------------+-----------+");
+        System.out.println("+----+----------------------+-----------+-------+");
+    }
+
+    public void feedDragon(Dragon dragon) {
+        String format = "| %-20s | %-5s | %-5s |%n";
+        System.out.println("+----------------------+-------+-------+");
+        System.out.format(format, "Dragon Name", "Level", "Feed");
+        System.out.println("+----------------------+-------+-------+");
+        System.out.format(format, dragon.getName(), dragon.getLevel(), "0".repeat(dragon.getFeed()));
+        System.out.println("+----------------------+-------+-------+");
     }
 
     // Element

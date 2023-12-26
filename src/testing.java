@@ -36,13 +36,13 @@ public class testing {
 
 
         // BATTLE
-        ArrayList<Dragon> botDragon = new ArrayList<>();
-        botDragon.add(Data.dragonList.getDragon(1));
-        botDragon.add(Data.dragonList.getDragon(0));
-        // botDragon.add(Data.dragonList.getDragon(2));
+        // ArrayList<Dragon> botDragon = new ArrayList<>();
+        // botDragon.add(Data.dragonList.getDragon(1));
+        // botDragon.add(Data.dragonList.getDragon(0));
+        // // botDragon.add(Data.dragonList.getDragon(2));
         
-        BattleController battle = new BattleController(Data.player.getPlayer().battleDragons(), new Bot(botDragon).battleDragons());
-        battle.startBattle();
+        // BattleController battle = new BattleController(Data.player.getPlayer().battleDragons(), new Bot(botDragon).battleDragons());
+        // battle.startBattle();
 
         // DUMMY BATTLE
         // Battle battle = new Battle(player, bot);
@@ -60,7 +60,7 @@ public class testing {
 
 
         // VIEW
-        // UserController user = new UserController();
-        // user.userMenu();
+        UserController user = new UserController();
+        user.userMenu();
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import src.Controller.Modul.Auth;
 import src.Node.Data.*;
+import src.View.Input;
 
 public class UserController {
 
@@ -135,7 +136,20 @@ public class UserController {
                     break;
                 case 2:
                     // lihat 1 aja
-                    int i = Integer.parseInt(Data.prompt.getUserInput("Pilih ID Naga : "));
+                    
+                    int i;
+                    while (true) {
+                        try {
+                            i = Integer.parseInt(Data.prompt.getUserInput("Pilih ID Naga : "))-1;
+                            if (i >= 0 && i < Data.player.getPlayer().getAllDragon().size()) {
+                                break; // Keluar dari loop jika input valid
+                            } else {
+                                System.out.println("DATA TIDAK DITEMUKAN");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("TIPE INPUT TIDAK VALID");
+                        }
+                    }
                     Data.view.showDragonDetails(Data.player.getPlayer().getDragon(i));
                     break;
                 case 3:

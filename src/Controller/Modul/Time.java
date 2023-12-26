@@ -18,6 +18,11 @@ public class Time {
         return formattedTime;
     }
 
+    public long time() {
+        long elapsedTime = System.currentTimeMillis() - startTime;
+        return elapsedTime;
+    }
+
     private String formatElapsedTime(long elapsedTime) {
         long minutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
         long seconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime) % 60;

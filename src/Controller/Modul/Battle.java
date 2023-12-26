@@ -1,11 +1,9 @@
 package src.Controller.Modul;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import src.Controller.Data;
-import src.Node.Data.Bot;
 import src.Node.Data.Dragon;
 
 public class Battle {

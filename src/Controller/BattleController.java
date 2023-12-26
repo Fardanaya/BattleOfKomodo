@@ -14,7 +14,7 @@ public class BattleController {
     private Battle player;
     private Battle bot;
     private boolean playerTurn;
-    
+
     Time time;
 
     public BattleController(List<Dragon> player, List<Dragon> bot) {
@@ -22,7 +22,7 @@ public class BattleController {
         this.bot = new Battle("BOT", bot);
 
         this.playerTurn = new Random().nextBoolean();
-        
+
         this.time = new Time();
     }
 
@@ -43,8 +43,6 @@ public class BattleController {
     public void startBattle() {
         // TODO: add validation for draw match, if player and bot only have dragon with
         // same element id.
-        System.out.println(playerTurn ? "Player's Turn" : "Bot's Turn");
-        // Data.game.turn(playerTurn);
         while (isAlive(player.getDragons()) && isAlive(bot.getDragons())) {
 
             if (!playerTurn) {
@@ -68,6 +66,34 @@ public class BattleController {
         }
 
         displayBattleResult();
+
+        double percentage = 0;
+        if ((time.time() / 1000) < 30) {
+            percentage += 0.10;
+        } else if ((time.time() / 1000) < 60) {
+            percentage += 0.05;
+        }
+
+        if (player.getDamageTaken() < bot.getDamageTaken() && player.getDamageDealed() > bot.getDamageDealed()) {
+            percentage += 0.10;
+        } else if (player.getDamageDealed() > bot.getDamageDealed()) {
+            percentage += 0.05;
+        }
+
+        int level = 0;
+        for (Dragon dragon : player.getDragons()) {
+            level += dragon.getLevel();
+        }
+        double rata = level / player.getDragons().size();
+
+        // FIXME: fix this
+        if (rata > 10) {
+            System.out.println(1000 + (1000 * percentage));
+        } else if (rata > 5) {
+            System.out.println(500 + (500 * percentage));
+        } else {
+            System.out.println(250 + (250 * percentage));
+        }
     }
 
     private Dragon selectDragon(String who, List<Dragon> dragons) {
@@ -116,19 +142,6 @@ public class BattleController {
         return skills.get(new Random().nextInt(skills.size()));
     }
 
-    // private Skill chooseSkill(Dragon dragon) {
-    // List<Skill> skills = dragon.getAllSkills();
-    // int choose;
-    // do {
-    // Game.displayDragonSkills(dragon);
-    // choose = Data.input.getUserInput("Choose Skill: ").trim().charAt(0) - '0';
-    // if (choose > 2 && (choose * 10) <= dragon.getLevel()) {
-    // System.out.println("Skill locked");
-    // }
-    // } while (choose < 1 || choose > skills.size());
-    // return skills.get(choose - 1);
-    // }
-
     private Skill chooseSkill(Dragon dragon) {
         List<Skill> skills = dragon.getAllSkills();
         int choose;
@@ -161,13 +174,15 @@ public class BattleController {
         Data.game.turn(playerTurn);
     }
 
-    private void displayBattleResult() {
+    private String displayBattleResult() {
         String result = "draw";
         if (isAlive(player.getDragons()) && !isAlive(bot.getDragons())) {
             result = "win";
         } else if (!isAlive(player.getDragons()) && isAlive(bot.getDragons())) {
             result = "lose";
         }
-        Data.game.displayBattleResult(result, player.getNickname(), bot.getNickname(), time.battleTime(), this.player, this.bot);
+        Data.game.displayBattleResult(result, player.getNickname(), bot.getNickname(), time.battleTime(), this.player,
+                this.bot);
+        return result;
     }
 }

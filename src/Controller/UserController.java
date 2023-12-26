@@ -147,7 +147,7 @@ public class UserController {
                                 System.out.println("DATA TIDAK DITEMUKAN");
                             }
                         } catch (NumberFormatException e) {
-                            System.out.println("TIPE INPUT TIDAK VALID");
+                            System.out.println("Input harus berupa angka");
                         }
                     }
                     Data.view.showDragonDetails(Data.player.getPlayer().getDragon(i));

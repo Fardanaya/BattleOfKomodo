@@ -52,7 +52,7 @@ public class UserController {
                     userDeck();
                     break;
                 case 4:
-                    Data.view.showAllDragon(Data.player.getPlayer().getAllDragon()); // DONE
+                    userZoo();
                     break;
                 case 5:
                     // market / shop
@@ -123,4 +123,25 @@ public class UserController {
             }
         } while (true);
     }
+
+    public void userZoo() {
+        int selectedOption;
+        do {
+            selectedOption = Data.menu.zoo();
+            switch (selectedOption) {
+                case 1:
+                    // lihat semua
+                    Data.view.showAllDragon(Data.player.getPlayer().getAllDragon());
+                    break;
+                case 2:
+                    // lihat 1 aja
+                    int i = Integer.parseInt(Data.prompt.getUserInput("Pilih ID Naga : "));
+                    Data.view.showDragonDetails(Data.player.getPlayer().getDragon(i));
+                    break;
+                case 3:
+                    return;
+            }
+        } while (selectedOption != 3);
+    }
+
 }

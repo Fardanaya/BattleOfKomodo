@@ -40,9 +40,15 @@ public class Menu {
 
     }
 
-    public void zoo() {
+    public int zoo() {
         System.out.println("===ZOO===");
+        String title = "ZOO";
+        String[] Menu = { "Lihat semua naga", "lihat naga", "Kembali" };
+        int selectedOption = menu.getMenuUserInput(title, Menu);
+        Game.cls();
+        return selectedOption;
         // FIXME : METHOD CHANGED
+        // tampilan selector aja
     }
 
     public void market() {

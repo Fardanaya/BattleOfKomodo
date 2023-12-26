@@ -142,7 +142,7 @@ public class UserController {
                         try {
                             i = Integer.parseInt(Data.prompt.getUserInput("Pilih ID Naga : "))-1;
                             if (i >= 0 && i < Data.player.getPlayer().getAllDragon().size()) {
-                                break; // Keluar dari loop jika input valid
+                                break;
                             } else {
                                 System.out.println("DATA TIDAK DITEMUKAN");
                             }

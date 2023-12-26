@@ -1,10 +1,8 @@
 package src.Controller;
 
-import java.util.ArrayList;
-
-import src.Controller.Modul.Auth;
+import src.Controller.Modul.*;
+import src.Controller.Modul.Battle;
 import src.Node.Data.*;
-import src.View.Input;
 
 public class UserController {
 
@@ -24,6 +22,8 @@ public class UserController {
                             nickname = Data.prompt.getUserInput("Buat Nickname Anda : ");
                         }
                         user.getPlayer().setNickname(nickname);
+                        user.getPlayer().addDragonToPlayer(Data.dragonList.getAllDragons().get(0).clone());
+                        user.getPlayer().addDragonToPlayer(Data.dragonList.getAllDragons().get(1).clone());
                     }
                     Data.setPlayer(user);
                     userMenu();
@@ -43,10 +43,9 @@ public class UserController {
             selectedOption = Data.menu.mainMenu();
             switch (selectedOption) {
                 case 1:
-                    // battle
+                    battle();
                     break;
                 case 2:
-                    // Feed
                     feeding();
                     break;
                 case 3:
@@ -69,36 +68,30 @@ public class UserController {
 
     public void userDeck() {
         int selectedOption;
+        Deck deck = new Deck();
         do {
-            Data.view.showAllDragon((ArrayList<Dragon>) Data.player.getPlayer().battleDragons());
+            Data.view.showBattleDeckDragon(Data.player.getPlayer().getAllDragon(), Data.player.getPlayer().getDeck());
             selectedOption = Data.menu.deckMenu();
             switch (selectedOption) {
                 case 1:
-                    if (Data.player.getPlayer().getDeck().size() < 3) {
-                        Data.game.print("Add Dragon");
-                        int id = Integer.parseInt(Data.prompt.getUserInput("ID Naga : "));
-                        if (Data.player.getPlayer().getDeck().contains(id - 1)) {
-                            Data.game.print("Naga sudah ada di deck");
-                        } else {
-                            Data.player.getPlayer().addDragonToDeck(id - 1);
-                        }
-                    } else {
-                        Data.game.print("Change Dragon"); // TODO Swap ID Dragon on Battledeck
-                    }
+                    deck.addDragonToDeck();
                     break;
                 case 2:
-                    Data.player.getPlayer().removeDragonFromDeck(Integer.parseInt(Data.prompt.getUserInput("Remove Dragon ID :")) - 1); // DONE
+                    deck.removeDragonFromDeck();
                     break;
                 case 3:
-                    Data.player.getPlayer().clearDeck(); // DONE
+                    deck.repositionDragon();
                     break;
                 case 4:
+                    deck.clearDeck();
+                    break;
+                case 5:
                     // exit
                     break;
                 default:
                     return;
             }
-        } while (selectedOption != 4);
+        } while (selectedOption != 5);
     }
 
     public void feeding() {
@@ -131,23 +124,20 @@ public class UserController {
             selectedOption = Data.menu.zoo();
             switch (selectedOption) {
                 case 1:
-                    // lihat semua
                     Data.view.showAllDragon(Data.player.getPlayer().getAllDragon());
                     break;
                 case 2:
-                    // lihat 1 aja
-                    
                     int i;
                     while (true) {
                         try {
-                            i = Integer.parseInt(Data.prompt.getUserInput("Pilih ID Naga : "))-1;
+                            i = Integer.parseInt(Data.prompt.getUserInput("Pilih ID Naga : ")) - 1;
                             if (i >= 0 && i < Data.player.getPlayer().getAllDragon().size()) {
                                 break;
                             } else {
-                                System.out.println("DATA TIDAK DITEMUKAN");
+                                Data.game.print("ID Naga tidak valid");
                             }
                         } catch (NumberFormatException e) {
-                            System.out.println("Input harus berupa angka");
+                            Data.game.print("ID Naga harus berupa angka");
                         }
                     }
                     Data.view.showDragonDetails(Data.player.getPlayer().getDragon(i));
@@ -156,6 +146,17 @@ public class UserController {
                     return;
             }
         } while (selectedOption != 3);
+    }
+    
+    public void battle() {
+        if (Data.player.getPlayer().getDeck().size() < 1) {
+            Data.game.print("You need at least 1 dragon in your deck to battle");
+            return;
+        }
+        
+        Battle battleModule = new Battle();
+        BattleController battle = new BattleController(Data.player.getPlayer().battleDragons(), new Bot(battleModule.generateBotTeam()).battleDragons());
+        battle.startBattle();
     }
 
 }

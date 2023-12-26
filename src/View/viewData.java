@@ -1,6 +1,7 @@
 package src.View;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import src.Node.Data.*;
 
@@ -25,22 +26,23 @@ public class viewData {
 
     // Dragon
     public void showDragonDetails(Dragon dragon) {
-        System.out.println("Dragon ID : " + dragon.getId());
-        System.out.println("Dragon Name : " + dragon.getName());
-        System.out.println("Dragon Level : " + dragon.getLevel());
-        System.out.println("Dragon Current HP : " + dragon.getBattleHP());
-        System.out.println("Dragon Max HP : " + dragon.getMaxHP());
-        // System.out.println("Dragon Experience : " + dragon.getExperience()); // FIXME
-        // : fix
-        System.out.println("Dragon Element : ");
-        System.out.println("   Element : " + dragon.getElement().getName());
-        System.out.println("   Weakness : " + dragon.getElement().getWeak());
-        System.out.println("   Strength : " + dragon.getElement().getStrong());
-        System.out.println("Dragon Age Stage : ");
-        System.out.println("   Age : " + dragon.getAgeStage().getStageName());
+        System.out.println("Name : " + dragon.getName());
+        System.out.println("Level : " + dragon.getLevel());
+        System.out.println("HP : " + dragon.getHP() + " / " + dragon.getMaxHP());
+        System.out.println("Element : " + dragon.getElement().getName());
+        System.out.println("- Weakness : " + String.join(", ", dragon.getElement().getWeak()));
+        System.out.println("- Strength : " + String.join(", ", dragon.getElement().getStrong()));
+        System.out.println("Age : " + dragon.getAgeStage().getStageName());
         System.out.println("Dragon Skill : ");
-        System.out.println("   Skill : " + dragon.getSkill());
-        System.out.println("   Skill Base Power : " + dragon.getSkill());
+        System.out.print("- Skill : ");
+        for (Skill skill : dragon.getSkill()) {
+            System.out.print(skill.getName());
+            if (dragon.getSkill().indexOf(skill) == dragon.getSkill().size() - 1) {
+                System.out.println();
+            } else {
+                System.out.print(", ");
+            }
+        }
     }
 
     public void showAllDragonDetails(ArrayList<Dragon> dragonList) {
@@ -66,6 +68,30 @@ public class viewData {
                     dragon.getLevel());
         }
         System.out.println("+----+----------------------+-----------+-------+");
+    }
+
+    public void showBattleDeckDragon(ArrayList<Dragon> dragonList, List<Integer> battleDeck) {
+        if (battleDeck.isEmpty()) {
+            System.out.println("Battle Deck is Empty");
+            return;
+        }
+
+        String format = "| %-4s |  | %-2s | %-20s | %-9s | %-5s |%n";
+        System.out.println("+------+  +----+----------------------+-----------+-------+");
+        System.out.format(format, "Slot", "ID", "Dragon Name", "Element", "Level");
+        System.out.println("+------+  +----+----------------------+-----------+-------+");
+
+        for (int deckId : battleDeck) {
+            int index = deckId - 1;
+            if (index >= 0 && index < dragonList.size()) {
+                Dragon dragon = dragonList.get(index);
+                System.out.format(format, battleDeck.indexOf(deckId) + 1, index + 1, dragon.getName(),
+                        dragon.getElement().getName(),
+                        dragon.getLevel());
+            }
+        }
+
+        System.out.println("+------+  +----+----------------------+-----------+-------+");
     }
 
     public void feedDragon(Dragon dragon) {

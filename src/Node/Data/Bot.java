@@ -10,8 +10,8 @@ public class Bot {
         this.dragon = dragon;
     }
 
-    public List<Dragon> battleDragons() {
-        List<Dragon> BattleDeck = new ArrayList<>();
+    public ArrayList<Dragon> battleDragons() {
+        ArrayList<Dragon> BattleDeck = new ArrayList<>();
 
         for (Dragon dragon : this.dragon) {
             Dragon clonedDragon = dragon.clone();

@@ -42,11 +42,11 @@ public class Player {
         this.coin = coin;
     }
 
-    public int getFood(){
+    public int getFood() {
         return food;
     }
 
-    public void setFood(int food){
+    public void setFood(int food) {
         this.food = food;
     }
 
@@ -108,18 +108,19 @@ public class Player {
     }
 
     public List<Dragon> battleDragons() {
-        List<Dragon> battleDeck = new ArrayList<>();
-    
+        ArrayList<Dragon> battleDeck = new ArrayList<>();
+
         for (Integer index : this.deck) {
-            if (index >= 0 && index < this.dragon.size()) {
-                Dragon dragon = this.dragon.get(index);
+            int adjustedIndex = index - 1;
+            if (index >= 0 && adjustedIndex < this.dragon.size()) {
+                Dragon dragon = this.dragon.get(adjustedIndex);
                 Dragon clonedDragon = dragon.clone();
                 clonedDragon.setBattleHP(clonedDragon.getHP());
                 battleDeck.add(clonedDragon);
             }
         }
-    
+
         return battleDeck;
     }
-    
+
 }

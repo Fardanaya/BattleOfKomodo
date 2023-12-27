@@ -3,6 +3,8 @@ package src.View;
 import java.io.Console;
 import java.util.Scanner;
 
+import src.Controller.Data;
+
 public class Input {
 
     private Scanner input = new Scanner(System.in);
@@ -26,7 +28,7 @@ public class Input {
         String leftAlignFormat = "| %-30s |%n";
 
         System.out.format("+--------------------------------+%n");
-        System.out.format(leftAlignFormat, title);
+        System.out.format(leftAlignFormat, Data.game.centerText(title, 30));
         System.out.format("+--------------------------------+%n");
         for (int i = 0; i < menuOptions.length; i++) {
             System.out.format(leftAlignFormat, i + 1 + ". " + menuOptions[i]);

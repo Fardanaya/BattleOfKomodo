@@ -1,7 +1,5 @@
 package src.View;
 
-import src.Controller.UserController;
-
 public class Menu {
 
     private Input menu;
@@ -13,20 +11,16 @@ public class Menu {
     public int userAuth() {
         String title = "Welcome to Dragon Game";
         String[] Menu = { "Register", "Login", "Keluar" };
-
         int selectedOption = menu.getMenuUserInput(title, Menu);
         Game.cls();
-
         return selectedOption;
     }
 
     public int mainMenu() {
         String title = "Main Menu";
         String[] Menu = { "Tarung", "Feeding", "Deck", "Zoo", "Market", "Logout" };
-
         int selectedOption = menu.getMenuUserInput(title, Menu);
         Game.cls();
-
         return selectedOption;
     }
 
@@ -41,28 +35,23 @@ public class Menu {
     }
 
     public int zoo() {
-        System.out.println("===ZOO===");
         String title = "ZOO";
         String[] Menu = { "Lihat semua naga", "lihat naga", "Kembali" };
         int selectedOption = menu.getMenuUserInput(title, Menu);
         Game.cls();
         return selectedOption;
-        // FIXME : METHOD CHANGED
-        // tampilan selector aja
     }
 
     public void market() {
         System.out.println("===MARKET===");
-        // TODO call func for print all komodo that available in market
+        // TODO: MARKET MENU
     }
 
     public int deckMenu() {
         String title = "Main Menu";
-        String[] Menu = { "Tambah / Ubah", "Hapus", "Reset Deck", "Kembali" };
-
+        String[] Menu = { "Tambah / Ubah", "Hapus","Reposition", "Reset Deck", "Kembali" };
         int selectedOption = menu.getMenuUserInput(title, Menu);
         Game.cls();
-
         return selectedOption;
     }
 

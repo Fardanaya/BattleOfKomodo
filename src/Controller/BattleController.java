@@ -168,6 +168,6 @@ public class BattleController {
         } else if (!isAlive(player.getDragons()) && isAlive(bot.getDragons())) {
             result = "lose";
         }
-        Data.game.displayBattleResult(result, player.getNickname(), bot.getNickname(), time.battleTime());
+        Data.game.displayBattleResult(result, player.getNickname(), bot.getNickname(), time.battleTime(), this.player, this.bot);
     }
 }

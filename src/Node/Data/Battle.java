@@ -11,7 +11,7 @@ public class Battle {
     public Battle(String nickname, List<Dragon> dragons) {
         this.nickname = nickname;
         this.damageDealed = 0;
-        this.damageTaken = 0;
+        this.damageTaken = 0; // TODO: Change this to each dragon ??? 
         this.dragons = dragons;
     }
 

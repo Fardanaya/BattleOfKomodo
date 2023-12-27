@@ -26,11 +26,6 @@ public class Game {
         }
     }
 
-    private String centerText(String text, int width) {
-        int padding = (width - text.length()) / 2;
-        return String.format("%" + (padding + text.length()) + "s", text);
-    }
-
     private String getHPBar(int currentHP, int maxHP) {
         int percentage = (int) Math.floor((double) currentHP / maxHP * 100);
         int oCount = percentage / 10;
@@ -82,15 +77,30 @@ public class Game {
         System.out.println(defender.getName() + " has " + defender.getBattleHP() + " HP remaining.\n");
     }
 
-    public void displayBattleResult(String status, String playerName, String botName, String time) {
+    public void displayBattleResult(String status, String playerName, String botName, String time, Battle player,
+            Battle bot) {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("+-----------------------------------------------------------------------------+\n");
         if (status.equals("win")) {
-            System.out.println("Congratulations! You have defeated " + botName + ".");
+            sb.append(centerText("Congratulations! You have defeated " + botName + ".\n", 75));
         } else if (status.equals("lose")) {
-            System.out.println("Game Over! " + Data.player.getPlayer().getNickname() + " has been defeated.");
+            sb.append(centerText("Game Over! " + Data.player.getPlayer().getNickname() + " has been defeated.\n", 75));
         } else {
-            System.out.println("The battle ended in a draw.");
+            sb.append(centerText("The battle ended in a draw.", 75));
         }
-        System.out.println("Total time elapsed : " + time);
+        sb.append(centerText("Total time elapsed : " + time + "\n", 75));
+
+        String dragonFormat = "| %-32s          %-32s |%n";
+        sb.append("+----------------------------------+      +----------------------------------+\n");
+        sb.append(String.format(dragonFormat, centerText(playerName, 32), centerText(botName, 32)));
+        sb.append("+----------------------------------+      +----------------------------------+\n");
+        sb.append(String.format(dragonFormat, centerText("Damage Dealed - " + player.getDamageDealed(), 32),
+                centerText("Damage Dealed - " + bot.getDamageDealed(), 32)));
+        sb.append(String.format(dragonFormat, centerText("Damage Taken - " + player.getDamageTaken(), 32),
+                centerText("Damage Taken - " + bot.getDamageTaken(), 32)));
+        sb.append("+----------------------------------+      +----------------------------------+\n");
+        System.out.println(sb.toString());
     }
 
     public void turn(boolean playerTurn) {
@@ -103,5 +113,10 @@ public class Game {
 
     public int selectSkill(List<String> availableSkills) {
         return Data.prompt.getMenuUserInput("Choose Skill", availableSkills.toArray(new String[0]));
+    }
+
+    public String centerText(String text, int width) {
+        int padding = (width - text.length()) / 2;
+        return String.format("%" + (padding + text.length()) + "s", text);
     }
 }

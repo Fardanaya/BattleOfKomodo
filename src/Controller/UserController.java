@@ -3,6 +3,7 @@ package src.Controller;
 import src.Controller.Modul.*;
 import src.Controller.Modul.Battle;
 import src.Node.Data.*;
+import src.Gui.*;
 
 public class UserController {
 
@@ -27,6 +28,8 @@ public class UserController {
                     }
                     Data.setPlayer(user);
                     userMenu();
+                    // main_menyu menu = new main_menyu();
+                    // menu.setVisible(true);
                     Data.setPlayer(null);
                     break;
                 case 3:

@@ -87,7 +87,7 @@ public class Setup {
         }
 
         // private void setupMarket() {
-        //         Data.marketList.addMarket(new Market(100, Data.dragonList.getDragon()));
+        //         Data.marketList.addMarket(new Market(100, ));
         // }
 
         public void setupSkill() {

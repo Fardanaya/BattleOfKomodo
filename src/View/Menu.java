@@ -51,7 +51,7 @@ public class Menu {
 
     public int beries() {
         String title = "Quantity";
-        String[] Menu = { "sack (5 food)    $50", "box (50 food)    $500", "bag (100 food)   $1000", "cart (500 food)   $5000", "Kembali" };
+        String[] Menu = { "sack (5 food)        $50", "bag (50 food)        $500", "box (100 food)       $1000", "cart (500 food)      $5000", "Kembali" };
         int selectedOption = menu.getMenuUserInput(title, Menu);
         Game.cls();
         return selectedOption;

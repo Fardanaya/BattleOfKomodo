@@ -77,7 +77,7 @@ public class Game {
         System.out.println(defender.getName() + " has " + defender.getBattleHP() + " HP remaining.\n");
     }
 
-    public void displayBattleResult(String status, String playerName, String botName, String time, Battle player,
+    public void displayBattleResult(String status, String playerName, String botName, String time, int reward, Battle player,
             Battle bot) {
 
         StringBuilder sb = new StringBuilder();
@@ -90,6 +90,7 @@ public class Game {
             sb.append(centerText("The battle ended in a draw.", 75));
         }
         sb.append(centerText("Total time elapsed : " + time + "\n", 75));
+        sb.append(centerText("Total reward : " + reward + " coins \n", 75));
 
         String dragonFormat = "| %-32s          %-32s |%n";
         sb.append("+----------------------------------+      +----------------------------------+\n");

@@ -42,9 +42,12 @@ public class Menu {
         return selectedOption;
     }
 
-    public void market() {
-        System.out.println("===MARKET===");
-        // TODO: MARKET MENU
+    public int market() {
+        String title = "MARKET";
+        String[] Menu = { "Naga", "Berry", "Kembali" };
+        int selectedOption = menu.getMenuUserInput(title, Menu);
+        Game.cls();
+        return selectedOption;
     }
 
     public int deckMenu() {

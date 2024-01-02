@@ -3,12 +3,13 @@ package src.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.Controller.Data;
 import src.Node.Data.*;
 
 public class viewData {
 
     // player
-    public void showPlayerDetails(Account player) {
+    public void showAccountDetails(Account player) {
         System.out.println("Nickname : " + player.getPlayer().getNickname());
         System.out.println("Username : " + player.getUsername());
         System.out.println(
@@ -19,9 +20,17 @@ public class viewData {
     public void showAllPlayerDetails(ArrayList<Account> playerList) {
         for (Account player : playerList) {
             System.out.println("========================");
-            showPlayerDetails(player);
+            showAccountDetails(player);
         }
         System.out.println("========================");
+    }
+
+    public void showPlayerDetails(Account player) {
+        String format = "| %-30s |%n";
+        System.out.println("+--------------------------------+");
+        System.out.format(format, "Nickname : " + player.getPlayer().getNickname());
+        System.out.format(format, "Coin : " + player.getPlayer().getCoin());
+        System.out.format(format, "Berry : "+ player.getPlayer().getFood());
     }
 
     // Dragon
@@ -85,7 +94,7 @@ public class viewData {
             int index = deckId - 1;
             if (index >= 0 && index < dragonList.size()) {
                 Dragon dragon = dragonList.get(index);
-                System.out.format(format, battleDeck.indexOf(deckId) + 1, index + 1, dragon.getName(),
+                System.out.format(format, Data.game.centerText(Integer.toString(battleDeck.indexOf(deckId) + 1), 4), index + 1, dragon.getName(),
                         dragon.getElement().getName(),
                         dragon.getLevel());
             }

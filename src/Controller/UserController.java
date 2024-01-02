@@ -40,6 +40,7 @@ public class UserController {
     public void userMenu() {
         int selectedOption;
         do {
+            Data.view.showPlayerDetails(Data.player);
             selectedOption = Data.menu.mainMenu();
             switch (selectedOption) {
                 case 1:
@@ -97,7 +98,13 @@ public class UserController {
     public void feeding() {
         do {
             Data.view.showAllDragon(Data.player.getPlayer().getAllDragon());
-            int pilih = Integer.parseInt(Data.prompt.getUserInput("Pilih Dragon: "));
+            int pilih = Integer.parseInt(Data.prompt.getUserInput("Pilih Naga : "));
+            
+            if (pilih < 1 || pilih > Data.player.getPlayer().getAllDragon().size()) {
+                Data.game.print("Naga tidak ditemukan");
+                continue;
+            }
+
             Dragon dragon = Data.player.getPlayer().getDragon(pilih - 1);
             while (true) {
                 int selectedOption = Data.menu.feed();
@@ -147,16 +154,17 @@ public class UserController {
             }
         } while (selectedOption != 3);
     }
-    
+
     public void battle() {
         if (Data.player.getPlayer().getDeck().size() < 1) {
             Data.game.print("You need at least 1 dragon in your deck to battle");
             return;
         }
-        
+
         Battle battleModule = new Battle();
-        BattleController battle = new BattleController(Data.player.getPlayer().battleDragons(), new Bot(battleModule.generateBotTeam()).battleDragons());
-        battle.startBattle();
+        BattleController battle = new BattleController(Data.player.getPlayer().battleDragons(),
+                new Bot(battleModule.generateBotTeam()).battleDragons());
+        Data.player.getPlayer().setCoin(Data.player.getPlayer().getCoin() + battle.startBattle());
     }
 
 }

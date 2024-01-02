@@ -7,7 +7,6 @@ import src.Controller.Data;
 import src.Node.Data.Dragon;
 
 public class Battle {
-    private static final int TEAM_SIZE_PERCENTAGE_3 = 85;
     private static final int TEAM_SIZE_PERCENTAGE_2 = 10;
     private static final int TEAM_SIZE_PERCENTAGE_1 = 5;
 

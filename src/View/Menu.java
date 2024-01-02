@@ -31,7 +31,6 @@ public class Menu {
         int selectedOption = menu.getMenuUserInput(title, Menu);
         Game.cls();
         return selectedOption;
-
     }
 
     public int zoo() {
@@ -45,6 +44,14 @@ public class Menu {
     public int market() {
         String title = "MARKET";
         String[] Menu = { "Naga", "Berry", "Kembali" };
+        int selectedOption = menu.getMenuUserInput(title, Menu);
+        Game.cls();
+        return selectedOption;
+    }
+
+    public int beries() {
+        String title = "Quantity";
+        String[] Menu = { "sack (5 food)    $50", "box (50 food)    $500", "bag (100 food)   $1000", "cart (500 food)   $5000", "Kembali" };
         int selectedOption = menu.getMenuUserInput(title, Menu);
         Game.cls();
         return selectedOption;

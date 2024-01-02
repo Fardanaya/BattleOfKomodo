@@ -56,7 +56,7 @@ public class UserController {
                     userZoo();
                     break;
                 case 5:
-                    // market / shop
+                    market();
                     break;
                 case 6:
                     // exit
@@ -165,6 +165,76 @@ public class UserController {
         BattleController battle = new BattleController(Data.player.getPlayer().battleDragons(),
                 new Bot(battleModule.generateBotTeam()).battleDragons());
         Data.player.getPlayer().setCoin(Data.player.getPlayer().getCoin() + battle.startBattle());
+    }
+
+    public void market(){
+        int selectedOption;
+        do {
+            selectedOption = Data.menu.market();
+            switch (selectedOption) {
+                case 1:
+                    
+                    break;
+                case 2:
+                int satuan;
+                    do {
+                        satuan = Data.menu.beries();
+                        int quantity;
+                    switch (satuan) {
+                        case 1:
+                        if (!(Data.player.getPlayer().getCoin() < 50)) {
+                            quantity = Integer.parseInt(Data.prompt.getUserInput("jumlah : "));
+                            if (Data.player.getPlayer().getCoin() >= 50*quantity) {
+                                Data.player.getPlayer().setFood(Data.player.getPlayer().getFood() + 5*quantity);
+                                Data.player.getPlayer().setCoin(Data.player.getPlayer().getCoin() - 50*quantity);
+                            continue;
+                            }
+                        }
+                            Data.game.print("Uang anda tidak cukup");
+                            break;
+                        case 2:
+                        if (!(Data.player.getPlayer().getCoin() < 500)) {
+                            quantity = Integer.parseInt(Data.prompt.getUserInput("jumlah : "));
+                            if (Data.player.getPlayer().getCoin() >= 500*quantity) {
+                                Data.player.getPlayer().setFood(Data.player.getPlayer().getFood() + 50*quantity);
+                                Data.player.getPlayer().setCoin(Data.player.getPlayer().getCoin() - 500*quantity);
+                            continue;
+                            }
+                        }
+                            Data.game.print("Uang anda tidak cukup");  
+                            break;
+                        case 3:
+                        if (!(Data.player.getPlayer().getCoin() < 1000)) {
+                            quantity = Integer.parseInt(Data.prompt.getUserInput("jumlah : "));
+                            if (Data.player.getPlayer().getCoin() >= 1000*quantity) {
+                                Data.player.getPlayer().setFood(Data.player.getPlayer().getFood() + 100*quantity);
+                                Data.player.getPlayer().setCoin(Data.player.getPlayer().getCoin() - 1000*quantity);
+                            continue;
+                            }
+                        }
+                            Data.game.print("Uang anda tidak cukup");
+                            break;  
+                        case 4:
+                        if (!(Data.player.getPlayer().getCoin() < 10000)) {
+                            quantity = Integer.parseInt(Data.prompt.getUserInput("jumlah : "));
+                            if (Data.player.getPlayer().getCoin() >= 10000*quantity) {
+                                Data.player.getPlayer().setFood(Data.player.getPlayer().getFood() + 500*quantity);
+                                Data.player.getPlayer().setCoin(Data.player.getPlayer().getCoin() - 10000*quantity);
+                            continue;
+                            }
+                        }
+                            Data.game.print("Uang anda tidak cukup");
+                            break;     
+                        default:
+                        
+                        break;
+                        }
+                    } while (satuan > 0 && satuan < 5);
+                    break;
+                case 3:
+                    return;
+            }
+        } while (selectedOption != 3);
     }
 
 }

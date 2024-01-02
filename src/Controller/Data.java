@@ -16,6 +16,7 @@ public class Data {
     public static ModelAccount playerList = new ModelAccount();
     public static ModelSkill skillList = new ModelSkill();
     public static ModelDragon dragonList = new ModelDragon();
+    public static ModelMarket marketList = new ModelMarket();
 
     // REQUIRED USER
     public static Account player;

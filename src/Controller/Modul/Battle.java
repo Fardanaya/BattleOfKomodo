@@ -1,15 +1,12 @@
 package src.Controller.Modul;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import src.Controller.Data;
-import src.Node.Data.Bot;
 import src.Node.Data.Dragon;
 
 public class Battle {
-    private static final int TEAM_SIZE_PERCENTAGE_3 = 85;
     private static final int TEAM_SIZE_PERCENTAGE_2 = 10;
     private static final int TEAM_SIZE_PERCENTAGE_1 = 5;
 

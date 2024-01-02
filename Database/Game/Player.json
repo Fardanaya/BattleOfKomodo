@@ -4,10 +4,8 @@
     "password": "a",
     "player": {
       "nickname": "Avux",
-      "level": 1,
-      "coin": 1000,
-      "food": 500,
-      "exp": 0,
+      "coin": 1612,
+      "food": 420,
       "dragon": [
         {
           "id": "icedragon",
@@ -45,12 +43,12 @@
         {
           "id": "volcanodragon",
           "name": "Flame Dragon",
-          "level": 0,
+          "level": 2,
           "battleHP": 0,
           "HP": 20,
           "maxHP": 1000,
           "feed": 0,
-          "reqFood": 5,
+          "reqFood": 6,
           "element": {
             "id": "flame",
             "name": "Flame",
@@ -93,12 +91,12 @@
         {
           "id": "tropicaldragon",
           "name": "Tropical Dragon",
-          "level": 0,
+          "level": 1,
           "battleHP": 0,
           "HP": 20,
           "maxHP": 1000,
           "feed": 0,
-          "reqFood": 5,
+          "reqFood": 6,
           "element": {
             "id": "nature",
             "name": "Nature",

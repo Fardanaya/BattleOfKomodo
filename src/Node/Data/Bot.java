@@ -1,7 +1,6 @@
 package src.Node.Data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Bot {
     private ArrayList<Dragon> dragon = new ArrayList<>();

@@ -11,7 +11,7 @@ public class Auth {
 
     public void register() {
         String username, password, verifpass;
-        Data.game.print("LOGIN");
+        Data.game.print("REGISTER");
         do {
             username = prompt.getUserInput("Username : ");
             if (Data.playerList.searchAccount(username) != -1) {

@@ -5,10 +5,8 @@ import java.util.List;
 
 public class Player {
     private String nickname;
-    private int level = 1;
     private int coin = 1000;
     private int food = 500;
-    private int exp = 0;
 
     private ArrayList<Dragon> dragon;
     private ArrayList<Integer> deck;
@@ -26,14 +24,6 @@ public class Player {
         this.nickname = nickname;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
     public int getCoin() {
         return coin;
     }
@@ -48,14 +38,6 @@ public class Player {
 
     public void setFood(int food) {
         this.food = food;
-    }
-
-    public int getExp() {
-        return exp;
-    }
-
-    public void setExp(int exp) {
-        this.exp = exp;
     }
 
     public int searchDragon(String name) {

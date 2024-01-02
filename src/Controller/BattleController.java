@@ -110,12 +110,22 @@ public class BattleController {
             for (Dragon dragon : dragons) {
                 if (dragon.getBattleHP() > 0) {
                     listAlive.add(dragon.getName());
+                } else {
+                    listAlive.add(dragon.getName() + " [dead]");
                 }
             }
         }
 
         if (who.equals("player") && playerTurn) {
-            return dragons.get(Data.prompt.getMenuUserInput("Select Dragon", listAlive.toArray(new String[0])) - 1);
+            do {
+                int pilih = Data.prompt.getMenuUserInput("Select Dragon", listAlive.toArray(new String[0])) - 1;
+                if (aliveDragonIndices.contains(pilih)) {
+                    Dragon naga = dragons.get(pilih);
+                    return naga;
+                } else {
+                    continue;
+                }
+            } while (true);
         } else {
             return dragons.get(aliveDragonIndices.get(new Random().nextInt(aliveDragonIndices.size())));
         }

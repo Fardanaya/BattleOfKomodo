@@ -3,6 +3,7 @@ package src.Controller;
 import src.Node.Data.Age;
 import src.Node.Data.Dragon;
 import src.Node.Data.Element;
+import src.Node.Data.Market;
 import src.Node.Data.Account;
 import src.Node.Data.Skill;
 import src.View.Game;
@@ -16,6 +17,7 @@ public class Setup {
                 // SAVED INTO MEMORY
                 setupElement();
                 setupAge();
+                // setupMarket();
                 // setupSkill();
 
                 // setupDragon(); // TODO : SEKALI SAJA KLO BELUM ADA DATA
@@ -82,8 +84,11 @@ public class Setup {
                 Data.dragonList.addDragon(new Dragon("tropicaldragon", "Tropical Dragon",
                                 Data.element.getElement(Data.element.searchElement("nature")),
                                 Data.age.getAge(Data.age.searchAge("egg"))));
-
         }
+
+        // private void setupMarket() {
+        //         Data.marketList.addMarket(new Market(100, ));
+        // }
 
         public void setupSkill() {
                 Data.skillList.addSkill(new Skill(0, "Fireball", 5, 0));

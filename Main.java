@@ -1,4 +1,5 @@
 import src.Controller.*;
+import src.Gui.main_menyu;
 import src.View.*;
 
 import src.testing;
@@ -20,6 +21,8 @@ public class Main {
         // PROGRAM
         UserController user = new UserController();
         user.userAuth();
+        // main_menyu menu = new main_menyu();
+        // menu.setVisible(true);
         
         // viewData playermenu = new viewData();
         // playermenu.showPlayerDetails(Data.player);;

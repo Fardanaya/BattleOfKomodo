@@ -4,8 +4,8 @@
     "password": "a",
     "player": {
       "nickname": "Avux",
-      "coin": 1612,
-      "food": 420,
+      "coin": 1512,
+      "food": 430,
       "dragon": [
         {
           "id": "icedragon",

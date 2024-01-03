@@ -1,18 +1,18 @@
 package src.Model.JSON;
 
-import com.google.gson.*;
-
-import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.io.*;
 
-public class ModelJSON<T> {
-    private final String fname;
+import com.google.gson.*;
+
+public class ModelJSON<T> extends JSON<T> {
 
     public ModelJSON(String fname) {
-        this.fname = fname;setupFile();
+        super(fname);
     }
 
+    @Override
     public boolean checkFile() {
         boolean status = false;
         if (new java.io.File(fname).exists()) {
@@ -21,6 +21,7 @@ public class ModelJSON<T> {
         return status;
     }
 
+    @Override
     public void setupFile() {
         try {
             if (checkFile() == false) {
@@ -40,15 +41,18 @@ public class ModelJSON<T> {
         }
     }
 
+    @Override
     public JsonArray convertListToJsonArray(ArrayList<T> list) {
         return new Gson().toJsonTree(list).getAsJsonArray();
     }
 
-    private ArrayList<T> convertJsonArrayToList(JsonArray jsonArray, Type type) {
+    @Override
+    public ArrayList<T> convertJsonArrayToList(JsonArray jsonArray, Type type) {
         Gson gson = new Gson();
         return gson.fromJson(jsonArray, type);
     }
 
+    @Override
     public void writeToFile(ArrayList<T> list) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(list);
@@ -60,6 +64,7 @@ public class ModelJSON<T> {
         }
     }
 
+    @Override
     public ArrayList<T> readFromFile(Type type) {
         ArrayList<T> list = new ArrayList<>();
         try (Reader reader = new FileReader(fname)) {
